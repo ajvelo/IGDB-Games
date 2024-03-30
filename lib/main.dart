@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:igdb_games/presentation/cubit/game/game_cubit.dart';
 import 'package:igdb_games/presentation/cubit/screenshot/screenshot_cubit.dart';
-import 'package:igdb_games/presentation/pages/game_detail_page.dart';
 import 'package:igdb_games/presentation/pages/main_page.dart';
 
 import 'injection_container.dart' as dependency;
