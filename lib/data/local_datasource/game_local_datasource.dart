@@ -1,7 +1,7 @@
 import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
 import 'package:igdb_games/data/local_datasource/game_dao.dart';
-import 'package:igdb_games/domain/game_entity.dart';
+import 'package:igdb_games/domain/entities/game_entity.dart';
 
 abstract class GameLocalDatasource {
   Future<List<Game>> fetchGames();

@@ -2,11 +2,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
 import 'package:igdb_games/core/status_enum.dart';
-import 'package:igdb_games/data/game_model.dart';
-import 'package:igdb_games/data/game_remote_datasource.dart';
+import 'package:igdb_games/data/models/game_model.dart';
+import 'package:igdb_games/data/remote_datasource/game_remote_datasource.dart';
 import 'package:igdb_games/data/game_repository.dart';
 import 'package:igdb_games/data/local_datasource/game_local_datasource.dart';
-import 'package:igdb_games/domain/game_entity.dart';
+import 'package:igdb_games/domain/entities/game_entity.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockRemoteDataSource extends Mock implements GameRemoteDatasource {}
@@ -17,7 +17,6 @@ void main() {
   final mockRemoteDataSource = MockRemoteDataSource();
   final mockLocalDataSource = MockLocalDataSource();
   const game = Game(
-    screenshot: ['screenshot'],
     storyLine: 'storyLine',
     id: 1,
     name: 'name',
@@ -27,7 +26,6 @@ void main() {
     totalRating: 0.0,
   );
   const secondGame = Game(
-    screenshot: ['screenshot'],
     storyLine: 'storyLine',
     id: 1,
     name: 'Z',
@@ -37,13 +35,11 @@ void main() {
     totalRating: 10.0,
   );
   const gameMode = GameMode(id: 1, name: 'name');
-  const gameImage = GameImage(id: 1, url: 'screenshot');
   const gameModel = GameModel(
       id: 1,
       cover: GameImage(id: 1, url: 'imageCover'),
       gameModes: [gameMode],
       name: 'name',
-      screenshots: [gameImage],
       storyline: 'storyLine',
       summary: 'summary',
       totalRating: 0.0,

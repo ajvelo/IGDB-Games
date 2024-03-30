@@ -3,8 +3,8 @@ import 'dart:io';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:igdb_games/data/game_model.dart';
-import 'package:igdb_games/domain/game_entity.dart';
+import 'package:igdb_games/data/models/game_model.dart';
+import 'package:igdb_games/domain/entities/game_entity.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,12 +17,6 @@ void main() {
       gameModes: [GameMode(id: 1, name: "Single player")],
       name: "Hellgate: London",
       status: 5,
-      screenshots: [
-        GameImage(
-            id: 710,
-            url:
-                "//images.igdb.com/igdb/image/upload/t_thumb/r4gzsrbgwlqvdm3u64sl.jpg"),
-      ],
       summary: "summary",
       totalRating: 74.82126012744726);
 
@@ -42,7 +36,6 @@ void main() {
       expect(firstResult.id, gameModel.id);
       expect(firstResult.status, gameModel.status);
       expect(firstResult.cover, gameModel.cover);
-      expect(firstResult.screenshots, gameModel.screenshots);
       expect(firstResult.gameModes, gameModel.gameModes);
       expect(firstResult.name, gameModel.name);
       expect(firstResult.storyline, gameModel.storyline);
@@ -57,7 +50,6 @@ void main() {
       expect(game.name, gameModel.name);
       expect(game.storyLine, gameModel.storyline);
       expect(game.summary, gameModel.summary);
-      expect(game.screenshot, gameModel.screenshots.map((e) => e.url));
     });
   });
 }

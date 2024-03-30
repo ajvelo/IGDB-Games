@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:igdb_games/core/server_exception.dart';
-import 'package:igdb_games/data/game_remote_datasource.dart';
+import 'package:igdb_games/data/remote_datasource/game_remote_datasource.dart';
 
 void main() {
   final mockDio = Dio(BaseOptions());

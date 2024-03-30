@@ -1,13 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:igdb_games/core/status_enum.dart';
-import 'package:igdb_games/domain/game_entity.dart';
+import 'package:igdb_games/domain/entities/game_entity.dart';
 
 class GameModel extends Equatable {
   final int id;
   final GameImage cover;
   final List<GameMode> gameModes;
   final String name;
-  final List<GameImage> screenshots;
   final String storyline;
   final String summary;
   final double totalRating;
@@ -18,7 +17,6 @@ class GameModel extends Equatable {
       required this.cover,
       required this.gameModes,
       required this.name,
-      required this.screenshots,
       required this.storyline,
       required this.summary,
       required this.totalRating,
@@ -30,8 +28,6 @@ class GameModel extends Equatable {
       gameModes: List<GameMode>.from(
           json["game_modes"].map((x) => GameMode.fromJson(x))),
       name: json["name"],
-      screenshots: List<GameImage>.from(
-          json["screenshots"].map((x) => GameImage.fromJson(x))),
       storyline: json["storyline"],
       summary: json["summary"],
       totalRating: json["total_rating"],
@@ -39,7 +35,7 @@ class GameModel extends Equatable {
 
   @override
   List<Object?> get props =>
-      [id, cover, gameModes, name, screenshots, storyline, summary, status];
+      [id, cover, gameModes, name, storyline, summary, status];
 }
 
 class GameImage extends Equatable {
@@ -85,7 +81,6 @@ extension GameModelExtension on GameModel {
         name: name,
         summary: summary,
         imageCover: cover.url,
-        screenshot: screenshots.map((image) => image.url).toList(),
         storyLine: storyline,
         totalRating: totalRating,
         status: Status.values.firstWhere((element) => element.value == status));

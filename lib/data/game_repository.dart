@@ -1,9 +1,9 @@
 import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
-import 'package:igdb_games/data/game_model.dart';
-import 'package:igdb_games/data/game_remote_datasource.dart';
+import 'package:igdb_games/data/models/game_model.dart';
+import 'package:igdb_games/data/remote_datasource/game_remote_datasource.dart';
 import 'package:igdb_games/data/local_datasource/game_local_datasource.dart';
-import 'package:igdb_games/domain/game_entity.dart';
+import 'package:igdb_games/domain/entities/game_entity.dart';
 import 'package:igdb_games/domain/game_repostiory_abstract.dart';
 
 class GameRepositoryImpl implements GameRepository {
@@ -49,6 +49,17 @@ class GameRepositoryImpl implements GameRepository {
       final gamesFromCache = await localDatasource.filterBy(
           filter: filter, isAscending: isAscending);
       return gamesFromCache;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  @override
+  Future<List<String>> fetchScreenShots({required int gameId}) async {
+    try {
+      final screenshots =
+          await remoteDatasource.fetchScreenShots(gameId: gameId);
+      return screenshots.map((e) => e.url).toList();
     } catch (e) {
       throw e.toString();
     }

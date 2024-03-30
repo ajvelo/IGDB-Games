@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:igdb_games/domain/game_entity.dart';
+import 'package:igdb_games/domain/entities/game_entity.dart';
 
 abstract class GameState extends Equatable {}
 

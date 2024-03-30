@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Game` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `summary` TEXT NOT NULL, `imageCover` TEXT NOT NULL, `screenshot` TEXT NOT NULL, `storyLine` TEXT NOT NULL, `totalRating` REAL NOT NULL, `status` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Game` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `summary` TEXT NOT NULL, `imageCover` TEXT NOT NULL, `storyLine` TEXT NOT NULL, `totalRating` REAL NOT NULL, `status` TEXT NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -112,10 +112,9 @@ class _$GameDao extends GameDao {
                   'name': item.name,
                   'summary': item.summary,
                   'imageCover': item.imageCover,
-                  'screenshot': _stringListConverter.encode(item.screenshot),
                   'storyLine': item.storyLine,
                   'totalRating': item.totalRating,
-                  'status': item.status.index
+                  'status': _statusIntConverter.encode(item.status)
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -136,9 +135,7 @@ class _$GameDao extends GameDao {
             storyLine: row['storyLine'] as String,
             summary: row['summary'] as String,
             totalRating: row['totalRating'] as double,
-            screenshot:
-                _stringListConverter.decode(row['screenshot'] as String),
-            status: Status.values[row['status'] as int]));
+            status: _statusIntConverter.decode(row['status'] as String)));
   }
 
   @override
@@ -157,9 +154,7 @@ class _$GameDao extends GameDao {
             storyLine: row['storyLine'] as String,
             summary: row['summary'] as String,
             totalRating: row['totalRating'] as double,
-            screenshot:
-                _stringListConverter.decode(row['screenshot'] as String),
-            status: Status.values[row['status'] as int]),
+            status: _statusIntConverter.decode(row['status'] as String)),
         arguments: [id]);
   }
 
@@ -170,4 +165,4 @@ class _$GameDao extends GameDao {
 }
 
 // ignore_for_file: unused_element
-final _stringListConverter = StringListConverter();
+final _statusIntConverter = StatusIntConverter();

@@ -3,21 +3,6 @@ import 'dart:convert';
 import 'package:floor/floor.dart';
 import 'package:igdb_games/core/status_enum.dart';
 
-class StringListConverter extends TypeConverter<List<String>, String> {
-  @override
-  List<String> decode(String databaseValue) {
-    final jsonFile = json.decode(databaseValue);
-    return List<String>.from(jsonFile['screenshots']).toList();
-  }
-
-  @override
-  String encode(List<String> value) {
-    final data = <String, dynamic>{};
-    data.addAll({'screenshots': value});
-    return json.encode(data);
-  }
-}
-
 class StatusIntConverter extends TypeConverter<Status, String> {
   @override
   Status decode(String databaseValue) {
@@ -29,7 +14,7 @@ class StatusIntConverter extends TypeConverter<Status, String> {
   @override
   String encode(Status value) {
     final data = <String, dynamic>{};
-    data.addAll({'status': value});
+    data.addAll({'status': value.value});
     return json.encode(data);
   }
 }

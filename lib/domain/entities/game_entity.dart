@@ -9,7 +9,6 @@ class Game extends Equatable {
   final String name;
   final String summary;
   final String imageCover;
-  final List<String> screenshot;
   final String storyLine;
   final double totalRating;
   final Status status;
@@ -21,18 +20,9 @@ class Game extends Equatable {
       required this.storyLine,
       required this.summary,
       required this.totalRating,
-      required this.screenshot,
       required this.status});
 
   @override
-  List<Object?> get props => [
-        id,
-        name,
-        summary,
-        screenshot,
-        totalRating,
-        imageCover,
-        storyLine,
-        status
-      ];
+  List<Object?> get props =>
+      [id, name, summary, totalRating, imageCover, storyLine, status];
 }

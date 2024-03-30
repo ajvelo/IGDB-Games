@@ -4,7 +4,7 @@ import 'package:igdb_games/core/server_exception.dart';
 import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/data/local_datasource/game_dao.dart';
 import 'package:igdb_games/data/local_datasource/game_local_datasource.dart';
-import 'package:igdb_games/domain/game_entity.dart';
+import 'package:igdb_games/domain/entities/game_entity.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockGameDao extends Mock implements GameDao {}
@@ -14,7 +14,6 @@ void main() {
   final localDataSource = GameLocalDatasourceImpl(dao: gameDao);
 
   const firstGame = Game(
-    screenshot: [""],
     status: Status.alpha,
     storyLine: "",
     id: 1,
@@ -24,7 +23,6 @@ void main() {
     totalRating: 50.0,
   );
   const secondGame = Game(
-    screenshot: [""],
     status: Status.alpha,
     storyLine: "",
     id: 1,
@@ -34,7 +32,6 @@ void main() {
     totalRating: 20.0,
   );
   const thirdGame = Game(
-    screenshot: [""],
     status: Status.alpha,
     storyLine: "",
     id: 1,

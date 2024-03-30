@@ -1,29 +1,43 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:igdb_games/core/image_clipper.dart';
 import 'package:igdb_games/core/status_enum.dart';
+import 'package:igdb_games/presentation/cubit/screenshot/screenshot_cubit.dart';
+import 'package:igdb_games/presentation/cubit/screenshot/screenshot_state.dart';
 import 'package:igdb_games/presentation/widgets/carousel_slider.dart';
 import 'package:igdb_games/presentation/widgets/status_badge.dart';
 
-class GameDetailPage extends StatelessWidget {
+class GameDetailPage extends StatefulWidget {
+  final int id;
   final String name;
   final String summary;
   final String coverImageUrl;
-  final List<String> screenshots;
   final String storyline;
   final double ranking;
   final Status status;
 
   const GameDetailPage({
     super.key,
+    required this.id,
     required this.name,
     required this.summary,
     required this.coverImageUrl,
-    required this.screenshots,
     required this.storyline,
     required this.ranking,
     required this.status,
   });
+
+  @override
+  State<GameDetailPage> createState() => _GameDetailPageState();
+}
+
+class _GameDetailPageState extends State<GameDetailPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ScreenshotCubit>().fetchScreenShots(gameId: widget.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +61,7 @@ class GameDetailPage extends StatelessWidget {
     return ClipPath(
       clipper: ImageClipper(),
       child: CachedNetworkImage(
-        imageUrl: "https:$coverImageUrl",
+        imageUrl: "https:${widget.coverImageUrl}",
         fit: BoxFit.cover,
         height: MediaQuery.of(context).size.height * 0.4,
         width: double.infinity,
@@ -75,7 +89,7 @@ class GameDetailPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  summary,
+                  widget.summary,
                   style: const TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 16),
@@ -85,7 +99,7 @@ class GameDetailPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  storyline,
+                  widget.storyline,
                   style: const TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 16),
@@ -94,9 +108,19 @@ class GameDetailPage extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
-                SizedBox(
-                    height: 200,
-                    child: CustomCarouselSlider(imageUrls: screenshots)),
+                BlocBuilder<ScreenshotCubit, ScreenShotState>(
+                  builder: (context, state) {
+                    if (state is ScreenShotLoadingState) {
+                      return const CircularProgressIndicator();
+                    } else if (state is ScreenShotLoadedState) {
+                      return SizedBox(
+                          height: 200,
+                          child: CustomCarouselSlider(imageUrls: state.urls));
+                    } else {
+                      return const SizedBox.shrink();
+                    }
+                  },
+                )
               ],
             ),
           ),
@@ -111,11 +135,11 @@ class GameDetailPage extends StatelessWidget {
         const Icon(Icons.star, color: Colors.amber),
         const SizedBox(width: 4.0),
         Text(
-          ranking.toStringAsFixed(1),
+          widget.ranking.toStringAsFixed(1),
           style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
         ),
         const Spacer(),
-        StatusBadge(status: status)
+        StatusBadge(status: widget.status)
       ],
     );
   }

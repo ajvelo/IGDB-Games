@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
 import 'package:igdb_games/domain/game_repostiory_abstract.dart';
-import 'package:igdb_games/presentation/cubit/game_state.dart';
+import 'package:igdb_games/presentation/cubit/game/game_state.dart';
 
 class GameCubit extends Cubit<GameState> {
   final GameRepository gameRepository;

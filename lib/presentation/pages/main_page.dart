@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:igdb_games/presentation/cubit/game_cubit.dart';
-import 'package:igdb_games/presentation/cubit/game_state.dart';
+import 'package:igdb_games/presentation/cubit/game/game_cubit.dart';
+import 'package:igdb_games/presentation/cubit/game/game_state.dart';
 import 'package:igdb_games/presentation/pages/game_detail_page.dart';
 import 'package:igdb_games/presentation/widgets/filter_dialog.dart';
 import 'package:igdb_games/presentation/widgets/game_card.dart';
@@ -51,10 +51,10 @@ class MainPage extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => GameDetailPage(
+                                id: game.id,
                                 name: game.name,
                                 summary: game.summary,
                                 coverImageUrl: game.imageCover,
-                                screenshots: game.screenshot,
                                 storyline: game.storyLine,
                                 ranking: game.totalRating,
                                 status: game.status),

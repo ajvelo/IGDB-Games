@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:igdb_games/core/filter.dart';
-import 'package:igdb_games/presentation/cubit/game_cubit.dart';
+import 'package:igdb_games/presentation/cubit/game/game_cubit.dart';
 
 class FilterOptionsDialog extends StatelessWidget {
   const FilterOptionsDialog({super.key});

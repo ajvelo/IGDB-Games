@@ -3,10 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
 import 'package:igdb_games/core/status_enum.dart';
-import 'package:igdb_games/domain/game_entity.dart';
+import 'package:igdb_games/domain/entities/game_entity.dart';
 import 'package:igdb_games/domain/game_repostiory_abstract.dart';
-import 'package:igdb_games/presentation/cubit/game_cubit.dart';
-import 'package:igdb_games/presentation/cubit/game_state.dart';
+import 'package:igdb_games/presentation/cubit/game/game_cubit.dart';
+import 'package:igdb_games/presentation/cubit/game/game_state.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockPostRepository extends Mock implements GameRepository {}
@@ -15,7 +15,6 @@ void main() {
   final mockPostRepository = MockPostRepository();
   late GameCubit gameCubit;
   const game = Game(
-    screenshot: ['screenshot'],
     storyLine: 'storyLine',
     id: 1,
     name: 'name',

@@ -1,5 +1,5 @@
 import 'package:floor/floor.dart';
-import 'package:igdb_games/domain/game_entity.dart';
+import 'package:igdb_games/domain/entities/game_entity.dart';
 
 @dao
 abstract class GameDao {
