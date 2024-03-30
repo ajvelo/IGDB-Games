@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:igdb_games/core/server_exception.dart';
+import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/data/local_datasource/game_dao.dart';
 import 'package:igdb_games/data/local_datasource/game_local_datasource.dart';
 import 'package:igdb_games/domain/game_entity.dart';
@@ -10,9 +11,11 @@ class MockGameDao extends Mock implements GameDao {}
 void main() {
   final gameDao = MockGameDao();
   final localDataSource = GameLocalDatasourceImpl(dao: gameDao);
+
   const game = Game(
-    screenshot: null,
-    storyLine: null,
+    screenshot: [""],
+    status: Status.alpha,
+    storyLine: "",
     id: 1,
     name: 'name',
     imageCover: 'imageCover',

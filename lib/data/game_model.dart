@@ -1,50 +1,57 @@
 import 'package:equatable/equatable.dart';
+import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/domain/game_entity.dart';
 
 class GameModel extends Equatable {
   final int id;
   final GameImage cover;
-  final List<GameMode>? gameModes;
+  final List<GameMode> gameModes;
   final String name;
-  final List<GameImage>? screenshots;
-  final String? storyline;
+  final List<GameImage> screenshots;
+  final String storyline;
   final String summary;
   final double totalRating;
   final String url;
+  final int status;
 
-  const GameModel({
-    required this.id,
-    required this.cover,
-    required this.gameModes,
-    required this.name,
-    required this.screenshots,
-    required this.storyline,
-    required this.summary,
-    required this.totalRating,
-    required this.url,
-  });
+  const GameModel(
+      {required this.id,
+      required this.cover,
+      required this.gameModes,
+      required this.name,
+      required this.screenshots,
+      required this.storyline,
+      required this.summary,
+      required this.totalRating,
+      required this.url,
+      required this.status});
 
   factory GameModel.fromJson(Map<String, dynamic> json) => GameModel(
-        id: json["id"],
-        cover: GameImage.fromJson(json["cover"]),
-        gameModes: json["game_modes"] != null
-            ? List<GameMode>.from(
-                json["game_modes"].map((x) => GameMode.fromJson(x)))
-            : null,
-        name: json["name"],
-        screenshots: json["screenshots"] != null
-            ? List<GameImage>.from(
-                json["screenshots"].map((x) => GameImage.fromJson(x)))
-            : null,
-        storyline: json["storyline"],
-        summary: json["summary"],
-        totalRating: json["total_rating"],
-        url: json["url"],
-      );
+      id: json["id"],
+      cover: GameImage.fromJson(json["cover"]),
+      gameModes: List<GameMode>.from(
+          json["game_modes"].map((x) => GameMode.fromJson(x))),
+      name: json["name"],
+      screenshots: List<GameImage>.from(
+          json["screenshots"].map((x) => GameImage.fromJson(x))),
+      storyline: json["storyline"],
+      summary: json["summary"],
+      totalRating: json["total_rating"],
+      url: json["url"],
+      status: json["status"]);
 
   @override
-  List<Object?> get props =>
-      [id, cover, gameModes, name, screenshots, storyline, summary, url];
+  List<Object?> get props => [
+        id,
+        cover,
+        gameModes,
+        name,
+        screenshots,
+        storyline,
+        summary,
+        url,
+        status
+      ];
 }
 
 class GameImage extends Equatable {
@@ -90,8 +97,9 @@ extension GameModelExtension on GameModel {
         name: name,
         summary: summary,
         imageCover: cover.url,
-        screenshot: screenshots?.map((image) => image.url).toList(),
+        screenshot: screenshots.map((image) => image.url).toList(),
         storyLine: storyline,
-        totalRating: totalRating);
+        totalRating: totalRating,
+        status: Status.values.firstWhere((element) => element.value == status));
   }
 }

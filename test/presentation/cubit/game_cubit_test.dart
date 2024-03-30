@@ -1,6 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:igdb_games/core/server_exception.dart';
+import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/domain/game_entity.dart';
 import 'package:igdb_games/domain/game_repostiory_abstract.dart';
 import 'package:igdb_games/presentation/cubit/game_cubit.dart';
@@ -13,12 +14,13 @@ void main() {
   final mockPostRepository = MockPostRepository();
   late GameCubit gameCubit;
   const game = Game(
-    screenshot: null,
-    storyLine: null,
+    screenshot: ['screenshot'],
+    storyLine: 'storyLine',
     id: 1,
     name: 'name',
     imageCover: 'imageCover',
     summary: 'summary',
+    status: Status.alpha,
     totalRating: 0.0,
   );
 

@@ -1,44 +1,9 @@
 [
     {
-        "id": 287454,
+        "id": 325,
         "cover": {
-            "id": 363074,
-            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co7s5e.jpg"
-        },
-        "game_modes": [
-            {
-                "id": 2,
-                "name": "Multiplayer"
-            }
-        ],
-        "name": "RGG Land",
-        "screenshots": [
-            {
-                "id": 1243607,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqnkn.jpg"
-            },
-            {
-                "id": 1243608,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqnko.jpg"
-            },
-            {
-                "id": 1243609,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqnkp.jpg"
-            },
-            {
-                "id": 1243610,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqnkq.jpg"
-            }
-        ],
-        "summary": "RGG Land is an online multiplayer board game where the goal is to reach the final square faster than other players. Rats, gremlins, teleporters (and some elevators) — it's all there in RGG Land.",
-        "total_rating": 100.0,
-        "url": "https://www.igdb.com/games/rgg-land--2"
-    },
-    {
-        "id": 279377,
-        "cover": {
-            "id": 348618,
-            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co7gzu.jpg"
+            "id": 94918,
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co218m.jpg"
         },
         "game_modes": [
             {
@@ -46,122 +11,24 @@
                 "name": "Single player"
             }
         ],
-        "name": "Vampire Survivors: Emergency Meeting",
+        "name": "Hellgate: London",
         "screenshots": [
             {
-                "id": 1204980,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scptro.jpg"
-            },
-            {
-                "id": 1204981,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scptrp.jpg"
-            },
-            {
-                "id": 1204982,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scptrq.jpg"
-            },
-            {
-                "id": 1204983,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scptrr.jpg"
-            },
-            {
-                "id": 1204984,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scptrs.jpg"
-            },
-            {
-                "id": 1204985,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scptrt.jpg"
-            },
-            {
-                "id": 1204986,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scptru.jpg"
-            },
-            {
-                "id": 1204987,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scptrv.jpg"
+                "id": 710,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/r4gzsrbgwlqvdm3u64sl.jpg"
             }
         ],
-        "summary": "The Survivors are desperate to hunt vampires, but are running out of places to look. Only one option remains: Be the bullet hell... in space!\n\nGather your most trusted Crewmates, prepare to eject the Impostors, and try to survive while mowing down thousands of extra-terrestrial foes in this expansion for Vampire Survivors. Turn classic Among Us tasks into outrageous weapons, upgrading your abilities after every roguelite run to overcome impossible odds with ease. Be alert to subterfuge as you explore the vast weirdness of the Polus Replica and keep your wits about you, as suspicious eyes are always watching.",
-        "total_rating": 100.0,
-        "url": "https://www.igdb.com/games/vampire-survivors-emergency-meeting"
+        "status": 5,
+        "storyline": "storyline",
+        "summary": "summary",
+        "total_rating": 74.82126012744726,
+        "url": "https://www.igdb.com/games/hellgate-london"
     },
     {
-        "id": 256090,
+        "id": 512,
         "cover": {
-            "id": 313883,
-            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co6q6z.jpg"
-        },
-        "game_modes": [
-            {
-                "id": 2,
-                "name": "Multiplayer"
-            }
-        ],
-        "name": "Blood on the Clocktower",
-        "summary": "Blood on the Clocktower is a game of murder and mystery, lies and logic, deduction and deception for five-to-twenty courageous players and one devious storyteller.\n\nA social game played in person or online, seated in a circle, each player receives either a ‘good’ or ‘evil’ token with their unique character on it. Good players share information to solve the mystery whilst evil players lie about who they are and what they know. The good team wins if they can piece together their knowledge, trust each other, and execute the demon. The evil team wins if the demon can sow distrust, evade detection, and wipe out the village.",
-        "total_rating": 100.0,
-        "url": "https://www.igdb.com/games/blood-on-the-clocktower--4"
-    },
-    {
-        "id": 234128,
-        "cover": {
-            "id": 283296,
-            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co62lc.jpg"
-        },
-        "name": "Apes vs Helium",
-        "summary": "Apes vs. Helium is a game that was made in 2020 and is a first person shooter based off of the tower defense game series Bloons TD. In the game you play as the unique monkeys that appear throughout the series, starting off as the Dart Monkey. You begin upgrading your weapons, changing classes, and buying extra support to help you along the way.",
-        "total_rating": 100.0,
-        "url": "https://www.igdb.com/games/apes-vs-helium"
-    },
-    {
-        "id": 230102,
-        "cover": {
-            "id": 277635,
-            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co5y83.jpg"
-        },
-        "name": "The Witcher 3: Wild Hunt - Free Next-Gen Update",
-        "screenshots": [
-            {
-                "id": 952339,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scketv.jpg"
-            },
-            {
-                "id": 952340,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scketw.jpg"
-            }
-        ],
-        "summary": "Next-gen update is free for all current owners of The Witcher 3: Wild Hunt on Xbox One.\nIncludes Performance and Quality modes, the latter implements Ray Tracing features.\nCommunity-made mods and CD Projekt Red gameplay/content additions are baked into the game.\nFeatures free Netflix “The Witcher” series-inspired DLC, including a new quest.\nCross progression lets you bring saves from and to other platforms.",
-        "total_rating": 100.0,
-        "url": "https://www.igdb.com/games/the-witcher-3-wild-hunt-free-next-gen-update"
-    },
-    {
-        "id": 214991,
-        "cover": {
-            "id": 277369,
-            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co5y0p.jpg"
-        },
-        "game_modes": [
-            {
-                "id": 1,
-                "name": "Single player"
-            }
-        ],
-        "name": "Maxon Petting Simulator",
-        "screenshots": [
-            {
-                "id": 951732,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scked0.jpg"
-            }
-        ],
-        "summary": "Maxon Petting Simulator is a clicker game about a cute kitty whose cheeks must always be squished. In this uncomplicated situation, Maxon's friends can help you: the cat who likes to jump by the TV, \"Manulooshka\", the Sandwich Cat, and many others.",
-        "total_rating": 100.0,
-        "url": "https://www.igdb.com/games/maxon-petting-simulator"
-    },
-    {
-        "id": 191406,
-        "cover": {
-            "id": 209041,
-            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co4hap.jpg"
+            "id": 85148,
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1tp8.jpg"
         },
         "game_modes": [
             {
@@ -171,145 +38,200 @@
             {
                 "id": 2,
                 "name": "Multiplayer"
+            },
+            {
+                "id": 3,
+                "name": "Co-operative"
             }
         ],
-        "name": "Portal: Companion Collection",
+        "name": "Uncharted 3: Drake's Deception",
         "screenshots": [
             {
-                "id": 738290,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfto2.jpg"
+                "id": 10913,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/htlgs12rau2b0ioyndhy.jpg"
             },
             {
-                "id": 738291,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfto3.jpg"
+                "id": 10914,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/dmosla0vizvx9rrpbqit.jpg"
             },
             {
-                "id": 738292,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfto4.jpg"
+                "id": 10915,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/emrydikio4zgsstvby0k.jpg"
             },
             {
-                "id": 738293,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfto5.jpg"
+                "id": 10916,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/j03srracbjrfzdvxinaz.jpg"
             },
             {
-                "id": 738294,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfto6.jpg"
+                "id": 10917,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/nzqyhy7lbovg7syqs2ad.jpg"
             },
             {
-                "id": 738295,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfto7.jpg"
+                "id": 403906,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nnm.jpg"
+            },
+            {
+                "id": 403907,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nnn.jpg"
+            },
+            {
+                "id": 403908,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nno.jpg"
+            },
+            {
+                "id": 403909,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nnp.jpg"
+            },
+            {
+                "id": 403910,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nnq.jpg"
+            },
+            {
+                "id": 403911,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nnr.jpg"
+            },
+            {
+                "id": 403912,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nns.jpg"
             }
         ],
-        "storyline": "In Portal, you’ll use a highly experimental portal device to solve physical puzzles and challenges. Maneuver objects--and yourself--through space to puzzle your way through the mysterious Aperture Science Laboratories.\n\nReturn to Aperture Laboratories in Portal 2 where you’ll once again face off with the lethally inventive, power-mad A.I. named GLaDOS. Meet an expanded cast of characters as you think your way through dangerous, never-before-seen areas of the laboratories and a wider variety of portal puzzles. Plus Portal 2 also includes a co-operative game mode with local, split-screen and online multiplayer so you and a friend can think with portals.",
-        "summary": "Break the laws of spatial physics in the hilariously mind-bending adventures of Portal and Portal 2! Including Portal and Portal 2, the Companion Collection comes with all the groundbreaking gameplay, dark humor, and exploration that earned the series hundreds of awards.",
-        "total_rating": 100.0,
-        "url": "https://www.igdb.com/games/portal-companion-collection"
+        "status": 5,
+        "storyline": "The story begins with Nathan \"Nate\" Drake (Nolan North) and Victor \"Sully\" Sullivan (Richard McGonagle) entering a pub in London to meet with a man named Talbot (Robin Atkin Downes), who is interested in purchasing Nate's ring. During the meeting, Nate and Sully accuse Talbot of offering them counterfeit banknotes, and a fight ensues. After fighting their way past Talbot's thugs, Nate and Sully emerge in an alleyway, where they are surrounded and subdued by Charlie Cutter (Graham McTavish), Talbot's cohort. They are then approached by Talbot's client, Katherine Marlowe (Rosalind Ayres), who steals Drake's ring. Nate attempts to go after her, but Cutter guns him and Sully down, seemingly killing them.\n\nThe story flashes back to 20 years earlier, where a teenage Nathan Drake (Billy Unger) explores a museum in Cartagena, Colombia, in search of Sir Francis Drake's ring, but is thrown out after guards suspect him of being a thief. Intrigued by the actions of Victor Sullivan, who he does not know at this point, Nate follows Sully to a keymaker and pickpockets him, before returning to the museum. He steals the ring, but before he can leave he is caught by Marlowe, her henchmen, and Sully, who was working for her. Nate flees with the ring, with Marlowe's agents in pursuit, but Sully rescues Nate from the agents and decides to act as a mentor to him.",
+        "summary": "A search for the fabled \"Atlantis of the Sands\" propels fortune hunter Nathan Drake on a trek into the heart of the Arabian Desert. When the terrible secrets of this lost city are unearthed, Drake's quest descends into a desperate bid for survival that strains the limits of his endurance and forces him to confront his deepest fears.",
+        "total_rating": 88.96567235297094,
+        "url": "https://www.igdb.com/games/uncharted-3-drake-s-deception"
     },
     {
-        "id": 163826,
+        "id": 555,
         "cover": {
-            "id": 168931,
-            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co3mcj.jpg"
+            "id": 110709,
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2df9.jpg"
         },
         "game_modes": [
             {
                 "id": 1,
                 "name": "Single player"
+            },
+            {
+                "id": 2,
+                "name": "Multiplayer"
+            },
+            {
+                "id": 3,
+                "name": "Co-operative"
             }
         ],
-        "name": "Blake: The Visual Novel",
+        "name": "Transformers: War for Cybertron",
         "screenshots": [
             {
-                "id": 583733,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scciet.jpg"
+                "id": 104454,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/fhwnpgf3jfh7mgnujksv.jpg"
             },
             {
-                "id": 583734,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sccieu.jpg"
+                "id": 104455,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/qkvmrwoweh9nfrh6hbx9.jpg"
             },
             {
-                "id": 583735,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scciev.jpg"
+                "id": 104456,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/jreexhvonmovxqc72xwu.jpg"
             },
             {
-                "id": 583736,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scciew.jpg"
+                "id": 104457,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/ciuup2lgfpilvbmk67id.jpg"
             },
             {
-                "id": 583737,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scciex.jpg"
+                "id": 104458,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/bm1kk12kkw7u5k2sobng.jpg"
             }
         ],
-        "storyline": "In the perpetually rainy city of New Stone, Blake, your average office worker, finds his world turned upside down when a series of incriminating events cause him to question what to do and who he should become.",
-        "summary": "Graphic Novel meets Visual Novel in this sci-fi/thriller interactive story. As incriminating events start to revolve around him, experience the dark, mind-bending journey of Blake and his pivotal transformation into a vigilante.",
-        "total_rating": 100.0,
-        "url": "https://www.igdb.com/games/blake-the-visual-novel"
+        "status": 8,
+        "storyline": "Become the ultimate weapon. Fight to the end in the war that started it all. Wield an arsenal of lethal, high-tech weaponry and change form from robot to vehicle at any time as you battle through the living, metallic world of Cybertron. Separate Autobot and Decepticon campaigns take you from Autobot and Decepticon cities, to the Energon core of Cybertron, to the outer reaches of the orbital debris while pitting brother against brother and friend against foe. Experience Optimus’ rise to greatness and Megatron’s thirst for destruction. The balance of power between Autobots and Decepticons is in your hands.",
+        "summary": "Transformers: War for Cybertron is a third-person shooter video game based on the Transformers franchise. Set on the Transformers' home planet of Cybertron, prior to their arrival on Earth, the game depicts the deadly civil war between Autobots and Decepticons. Players may pick either faction, as each has its own separate campaign.\n\nThe game was delisted at the end of 2017 and the online multiplayer servers were shutdown in April 2020.",
+        "total_rating": 72.41057844541464,
+        "url": "https://www.igdb.com/games/transformers-war-for-cybertron"
     },
     {
-        "id": 145278,
+        "id": 565,
         "cover": {
-            "id": 210500,
-            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co4if8.jpg"
+            "id": 85079,
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co1tnb.jpg"
         },
         "game_modes": [
             {
                 "id": 1,
                 "name": "Single player"
+            },
+            {
+                "id": 2,
+                "name": "Multiplayer"
+            },
+            {
+                "id": 3,
+                "name": "Co-operative"
             }
         ],
-        "name": "Arcade Spirits: The New Challengers",
+        "name": "Uncharted 2: Among Thieves",
         "screenshots": [
             {
-                "id": 429140,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc974k.jpg"
+                "id": 117179,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/y8hfgmvpa4cfiigzp7px.jpg"
             },
             {
-                "id": 429141,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc974l.jpg"
+                "id": 117180,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/wiaemy9tvcghaxhdwise.jpg"
             },
             {
-                "id": 429142,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc974m.jpg"
+                "id": 117181,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/lixunrfynbqpnbmf4eqr.jpg"
             },
             {
-                "id": 429143,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc974n.jpg"
+                "id": 117182,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/vle5aurbgpszueahjpng.jpg"
             },
             {
-                "id": 429144,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc974o.jpg"
+                "id": 117183,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/il4jraotz45isic3z6wp.jpg"
             },
             {
-                "id": 429145,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc974p.jpg"
+                "id": 403686,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nhi.jpg"
             },
             {
-                "id": 429146,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc974q.jpg"
+                "id": 403687,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nhj.jpg"
             },
             {
-                "id": 429147,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc974r.jpg"
+                "id": 403688,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nhk.jpg"
             },
             {
-                "id": 429148,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc974s.jpg"
+                "id": 403689,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nhl.jpg"
             },
             {
-                "id": 429149,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc974t.jpg"
+                "id": 403690,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nhm.jpg"
+            },
+            {
+                "id": 403691,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nhn.jpg"
+            },
+            {
+                "id": 403692,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc8nho.jpg"
             }
         ],
-        "storyline": "In the distant future year 20XX, an alternate timeline where arcades never went away... you're an aspiring gamer searching for esports glory on the Fist of Discomfort 2 Pro Tour. Seeking a partner to play with, you join a team of players who hang out at Good Clean Fun, a combination pizzeria / laundromat / arcade. It's up to you to rally the team, learning more about who they are and how best to support their dreams along the way. Defeat rivals, conquer tournaments, build relationships, and uncover a strange arcade conspiracy as your team walks the road to victory!",
-        "summary": "Arcade Spirits: The New Challengers is the follow-up to 2019's Arcade Spirits, a visual novel of love and pixels, in which you seek friendship and romance while working in an arcade. Now the tables are turned, as you seek friendship and romance while PLAYING in an arcade!",
-        "total_rating": 100.0,
-        "url": "https://www.igdb.com/games/arcade-spirits-the-new-challengers"
+        "status": 5,
+        "storyline": "Two years after the events of the first game, treasure hunter Nathan Drake (Nolan North) is approached by former associate Harry Flynn (Steve Valentine) and Flynn's girlfriend Chloe Frazer (Claudia Black) to help steal a Mongolian oil lamp connected to Marco Polo's doomed 1292 voyage from China. The group plans to cheat Flynn's client and take Polo's treasure for themselves. Unbeknownst to Flynn, Chloe and Nate had worked together before, and Chloe plans on blackmailing Flynn and escaping with Nate and whatever treasure they find.\n\nNate and Flynn break into a museum in Istanbul and find the lamp, which contains a map and flammable resin that reveals Polo's fleet was shipwrecked in Borneo, and was carrying the Cintamani Stone from the fabled city of Shambhala. Flynn double-crosses Nate, leaving him to be arrested.\n\nThree months later, Chloe helps free Nate with his longtime friend Victor Sullivan (Richard McGonagle). She reveals that Flynn is working for Zoran Lazarević (Graham McTavish), a Serbian war criminal seeking the stone. In Borneo, Nate and Sully infiltrate Lazarević's camp, with Chloe as a mole. Nate discovers that the stone never left Shambhala, and locates a temple containing the bodies of Polo's crew, as well as a phurba and map detailing that its carrier will gain passage to Shambhala through a temple in Nepal. Nate and Sully escape after being cornered by Flynn and his men.",
+        "summary": "In the sequel to Drake's Fortune, Nathan Drake comes across a map that showcases the location of Marco Polo's missing ships. It takes him on a journey to find the infamous Cintamani Stone, and uncover the truth behind it.",
+        "total_rating": 92.16836360461448,
+        "url": "https://www.igdb.com/games/uncharted-2-among-thieves"
     },
     {
-        "id": 24250,
+        "id": 575,
         "cover": {
-            "id": 53071,
-            "url": "//images.igdb.com/igdb/image/upload/t_thumb/fj1zhvmuhczz4mm0gwhw.jpg"
+            "id": 124765,
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2o9p.jpg"
         },
         "game_modes": [
             {
@@ -321,15 +243,294 @@
                 "name": "Multiplayer"
             }
         ],
-        "name": "SuperPower 2",
+        "name": "The Godfather II",
         "screenshots": [
             {
-                "id": 112225,
-                "url": "//images.igdb.com/igdb/image/upload/t_thumb/ejghcfips5bzfmrs6vdy.jpg"
+                "id": 714740,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfbhw.jpg"
+            },
+            {
+                "id": 714741,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfbhx.jpg"
+            },
+            {
+                "id": 714742,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfbhy.jpg"
+            },
+            {
+                "id": 714743,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfbhz.jpg"
+            },
+            {
+                "id": 714744,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfbi0.jpg"
+            },
+            {
+                "id": 714745,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfbi1.jpg"
+            },
+            {
+                "id": 714746,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scfbi2.jpg"
             }
         ],
-        "summary": "SuperPower 2 is a real-time strategy wargame developed by Canadian based GolemLabs and published by DreamCatcher Games in 2004, following SuperPower. It was released between October 11 and November 19, 2004 in North America and Europe, respectively.",
-        "total_rating": 100.0,
-        "url": "https://www.igdb.com/games/superpower-2"
+        "status": 8,
+        "storyline": "In 1958, three years after the events of the first game, elderly mobster Hyman Roth calls a meeting with the Corleone, Granados, Mangano, and Almeida families in Havana to discuss their future Cuban business prospects under the cooperative government of Fulgencio Batista. Roth announces his intentions to have his businesses divided between the four families once he retires. However, the guests become caught in the ongoing Cuban Revolution, and Corleone underboss Aldo Trapani is killed during the chaos. Don Michael Corleone, his brother Fredo, and Trapani's second-in-command, Dominic , manage to escape aboard a private plane, and Michael appoints Dominic as his new underboss, placing him in charge of the family's businesses in New York City.",
+        "summary": "After being promoted by Michael Corleone to Don of New York, players expand to new cities, as they build up their families through extorting businesses, monopolizing illegal crime rings and defeating new families in an effort to become the most powerful mob family in America. To help players manage their empire, The Godfather II introduces \"The Don's View\" - an innovative strategy meta-game that allows players to oversee the entire world as they grow the family business. Using the Don's View, players will be able to build, defend and expand their crime rings, while keeping an eye on the movements and plans of the rival families. Players will also learn to master the business of organized crime by building a family of Made Men, hiring crew, handing out orders, and promoting their best men up the ranks. Set in a stunning open-world environment, The Godfather II expands on the popular gameplay mechanics of the first game and doubles down on the series' signature BlackHand control scheme, which now features even more visceral hand-to-hand brutality at your fingertips, introducing a new combo system, pressure tactics and executions. In The Godfather II, players fight alongside their hand-picked crew, who have their own skills and expertise. Each family member specializes in a specific field such as demolitions, arson, engineering, first-aid and more. As The Don you control the family, sending some of your men on missions while heading off into action with others. The combination of strategic organized crime gameplay and brutal BlackHand action promises to set The Godfather II apart from other open-world games. Play The Godfather II online multiplayer modes and become the true Don of Dons. Take your money, weapons, and crew from your single-player experience online and wage mob warfare against up to 16 players from around the world. Play as one of the family's crew specialists and put your best strategies to the test as you take over territory and strike back at rivals. Earn upgrades and money that can be used in your single-player experience.",
+        "total_rating": 67.46615442257851,
+        "url": "https://www.igdb.com/games/the-godfather-ii"
+    },
+    {
+        "id": 603,
+        "cover": {
+            "id": 218864,
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co4ovk.jpg"
+        },
+        "game_modes": [
+            {
+                "id": 5,
+                "name": "Massively Multiplayer Online (MMO)"
+            }
+        ],
+        "name": "Asheron's Call",
+        "screenshots": [
+            {
+                "id": 383253,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc87px.jpg"
+            },
+            {
+                "id": 383254,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc87py.jpg"
+            },
+            {
+                "id": 383255,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc87pz.jpg"
+            },
+            {
+                "id": 383256,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/sc87q0.jpg"
+            }
+        ],
+        "status": 5,
+        "storyline": "The story for players began in Portal Year 10. Through the game's monthly updates the story unfolds. Not only do players experience the current events of the world, but as the months go on and they explore, they learn much about the past. Several monthly updates build upon each other, forming a story arc. Each story arc usually lasts around one year.",
+        "summary": "Asheron's Call (AC) is a fantasy MMORPG (massively multiplayer online role-playing game) for Microsoft Windows-based PCs developed and published by Turbine Entertainment. Though it was developed by the Turbine team (with Microsoft's extensive assistance), it was published as a Microsoft title until 2004.\n\nThe game was set on the island continent of Dereth and several surrounding smaller islands and archipelagos on the fictional planet of Auberean. The game was played in a large, seamless 3D virtual world which could host thousands of players' characters at a time.\n\nReleased on November 2, 1999, it was the third major MMORPG to be released and was developed at the same time as Ultima Online and Everquest. After initial success, its subscription numbers dropped as newer MMORPGs moved into the market. Its host servers remained online for over 17 years after the game's original launch.",
+        "total_rating": 85.0,
+        "url": "https://www.igdb.com/games/asheron-s-call"
+    },
+    {
+        "id": 763,
+        "cover": {
+            "id": 94528,
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co20xs.jpg"
+        },
+        "game_modes": [
+            {
+                "id": 2,
+                "name": "Multiplayer"
+            },
+            {
+                "id": 3,
+                "name": "Co-operative"
+            },
+            {
+                "id": 5,
+                "name": "Massively Multiplayer Online (MMO)"
+            }
+        ],
+        "name": "Heroes of Newerth",
+        "screenshots": [
+            {
+                "id": 4193,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/k2grfylhbjn8x7tct695.jpg"
+            },
+            {
+                "id": 4194,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/oooft2vjvtf7pmb4bjps.jpg"
+            },
+            {
+                "id": 4195,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/aijlhciqrybtxnj9ao1k.jpg"
+            },
+            {
+                "id": 4196,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/esj7hfwlt1m8wwhv1f86.jpg"
+            },
+            {
+                "id": 4197,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/qga4hul4z8ovld8vzpsy.jpg"
+            }
+        ],
+        "status": 5,
+        "storyline": "Jeraziah watched the piles of burning bodies. His soldiers. Men and women, humans and beasts. Killed defending each other, their beliefs, their homes. Their king.\n\nMartyrs droned their prayers next to the fires, which crackled and sizzled as the corpses were consumed. A shamanic ape with blood matted in his fur sang words of sorrow for the fallen, and though Jeraziah did not understand the language he knew exactly what the words meant.\n\nThe priests did this work for the souls of the dead, helping them into whatever afterlife waited for them. Not long ago Jeraziah would have joined in the ceremony. Now he simply watched the bodies burn to make sure they wouldn’t have to be killed again.\n\nHe recognized faces within the flames. Friends he had shared a meal with the previous night before leading the dawn raid. They grimaced as the fire touched them. Jeraziah knew it was the heat pulling the dead flesh and muscles taut, but he still fought the urge to reach into the pyres and drag them free. A shred of life might still remain within them, a dim light that could be held in his cupped hands, nursed back to brightness, and returned to an anguished family.\n\nThe faces reddened, blistered, and blackened. The king did not look away. Only when the flesh was gone and empty skulls stared back at him did he turn to the other fires, set apart from the dead Legion warriors. The daemon bodies gave off a foul, acrid smoke and burned stubbornly. Most of the creatures were born in fire and required attention from the Pyromancers to succumb to the flames.\n\n“Whatever it takes,” Jeraziah had told them. “Nothing left but ash. Then douse it with blessed water and bury everything.”\n\nThe Hellbourne piles were smaller than the Legion. This gave no indication of the true toll, since the daemons had a habit of eating their dead even in the chaos of battle, but Jeraziah knew he had lost too many. He also knew it could have been much worse.\n\nThe raid had been successful. It was one of several initiatives brought forth by the Paragons, whose presence had immediately shifted the tide of war. They had also shifted alliances within the Legion itself—the Sacred Order found their presence blasphemous, and some of the king’s War Council found their cold, detached consultations and casualty estimates offensive—but Jeraziah could not dwell on that now.\n\nThe Paragons were working.\n\nThat was all that mattered.\n\nThe URSA Corps had been muzzled by the stunning power of the Argentian sorcerers. Temporarily, perhaps, but the king cherished every moment while the self-righteous URSA licked their wounds and tried to cobble together something to counter the ancient, elemental magic of the Paragons. And as much as Jeraziah welcomed that sorcery, the knowledge of Newerth they carried was perhaps more valuable.\n\nThe Paragons knew the land as it once had been, the secrets it held, and they gathered every new disturbance to Newerth, from the smallest leaf settling at the bottom of the Rulian Marsh to a monument toppling in a valley of the Sang-La Mountains. The crystals within their bodies communed with the massive rock faces of the Iron Mountains glittering with silica, the grains of sand and dust blowing across the Great Waste, the tiny fragments drawn up through roots into the flora of Caldavar, Death’s Cradle, Fúathmoor, even the enigmatic Luminary.\n\nFor the Paragons, the corruption of Newerth was like a bloodstain soaking through a white shroud. They knew where it was, at all times, and where it could be thwarted. And for Jeraziah, this information was better than any Scout reconnaissance or bestial divination.\n\nThe Emerald and Bloodstone Paragons had shown Jeraziah the ancient, hidden way through the Ardu foothills to the west of the Blight Fields. Thought to be unscalable, the foothills had served as a natural barrier to Hell’s Keep and the endless corruption seeping out of the Scar. While this kept the daemons from flooding across Newerth en masse, it also made it impossible for Jeraziah to wage a proper siege without looping north into the Iron Mountains or south into the Great Waste. Either option would lead to untold losses through attrition before the actual battle even began.\n\nIn the aftermath of this small raid, a probing foray into Hellbourne territory, Jeraziah allowed himself to hope there was another way. He left the smoldering fires and found the two Paragons watching the sun rise over the eastern mountains. They were lightly wounded yet did not bleed, and did not need the food or wine that man craved after a near brush with death.\n\n“You would not tell me before,” the king said. “What of now? How did we not know of this path through the Ardu? My patrols have been over every crevice of these rocks.”\n\n“Over, yes,” the Lapis Lazuli sorcerer said. “Not through? Or in?”\n\nThe Emerald sorceress nodded once. “The path is not available to those who have not taken it.”\n\nJeraziah ground his teeth. The Paragons’ inclination for cryptic statements and answering questions with questions was exhausting at best, often infuriating. But he held his tongue and gathered his patience. Before he could try again, the veteran Legionnaire Cutter stepped out of the drifting smoke and stood at attention.\n\n“We have prisoners, sir.”\n\nJeraziah’s stomach clenched, though his face remained impassive. He hoped for imps or some other soulless minion. Something that would not require a choice.\n\n“What sort?” he said.\n\n“Bloodthirsty, sir,” Cutter said, “twenty or so. Led by a half-dozen Acolytes.”\n\nJeraziah cursed, a brief eruption that would have made the priests gasp, had they been within earshot. The Bloodthirsty were humans who followed the path of Dampeer, subsisting only on human blood until their bodies began to crave it, require it. Acolytes were possibly worse. They sold their souls in return for an apprenticeship with a Hellbourne master, seeking power and position in the lifeless world the daemons hungered for. No matter what they had done, though, they were all still human. It was Jeraziah’s royal policy to shackle any such prisoners and ship them back to Arasunia for exorcism, purification, and introduction back into civilized society.\n\nCutter made sure his king was done blaspheming, then said, “We’re clearing out some provision wagons to take them home.” He turned to oversee the task.\n\n“Execute them,” Jeraziah said.\n\nCutter stopped. “Sir?”\n\n“Line them up and execute them.” Jeraziah stared at the ground as he spoke. “All but one. Find the youngest among them, the least corrupted, and chop his hands off. Then send him back to his new masters and comrades. Let them see what happens when they forsake their fellow man.”\n\nCutter hesitated. “My king, are you—”\n\n“It was their choice. I am merely responding accordingly.”\n\n“Sir,” Cutter said, and walked away. His king was changing. Necessary, Cutter knew, but the thought of losing every shred of the boy he’d guarded since before the wee lad could sit upright threatened to break his heart. The Legionnaire packed that notion away for another time, when dwelling on such things wouldn’t get him or someone else killed. He thumbed the edge of his axe. It would need sharpening before the king’s work began.",
+        "summary": "Heroes of Newerth builds upon the DotA formula and takes it to the next level by delivering cutting edge graphics, fast-paced gameplay, meticulous statistical tracking, and server-client networking that feeds gamers' competitive appetites around the world.\n\nHeroes of Newerth puts two teams of players against each other: the Legion and the Hellbourne. Both teams are based at opposite sides of a map. The standard map is split into three continuous 'lanes' (Two in one of the lesser-played maps), running from one base to the other. Defensive towers are positioned evenly through each lane, until the lanes terminate at a team's base.\n\nAfter 12 years of competitive release, Heroes of Newerth finally went offline on June 20th 2022.",
+        "total_rating": 77.01318728873377,
+        "url": "https://www.igdb.com/games/heroes-of-newerth"
+    },
+    {
+        "id": 1377,
+        "cover": {
+            "id": 106715,
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2acb.jpg"
+        },
+        "game_modes": [
+            {
+                "id": 1,
+                "name": "Single player"
+            },
+            {
+                "id": 2,
+                "name": "Multiplayer"
+            }
+        ],
+        "name": "Spec Ops: The Line",
+        "screenshots": [
+            {
+                "id": 1228069,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqbl1.jpg"
+            },
+            {
+                "id": 1228070,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqbl2.jpg"
+            },
+            {
+                "id": 1228071,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqbl3.jpg"
+            },
+            {
+                "id": 1228072,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqbl4.jpg"
+            },
+            {
+                "id": 1228073,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqbl5.jpg"
+            },
+            {
+                "id": 1228074,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqbl6.jpg"
+            },
+            {
+                "id": 1228075,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqbl7.jpg"
+            },
+            {
+                "id": 1228076,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqbl8.jpg"
+            },
+            {
+                "id": 1228077,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqbl9.jpg"
+            },
+            {
+                "id": 1228078,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqbla.jpg"
+            },
+            {
+                "id": 1228079,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scqblb.jpg"
+            }
+        ],
+        "status": 8,
+        "storyline": "The game will follow the story of player character Captain Martin Walker (voiced by Nolan North) as he is sent into a post-apocalyptic Dubai with an elite Delta Force bravo team. Previously, Dubai was a wealthy area with many high profile citizens until catastrophic sandstorms left a majority of the city buried. This caused many to evacuate, leaving only a few behind. One of the people left behind was U.S. Army Colonel John Konrad (a reference to the author of Heart of Darkness, Joseph Conrad), a founding member of Delta Force, who refused to evacuate from a training facility in the city and instead remained behind with the men under his command to help protect the citizens that could not evacuate.\n\nAfter several weeks of no contact, the Army fears that Col. Konrad and his men are lost to the destruction of the city until a weak distress signal is picked up. This gives the Army reason to deploy the player and their squad, who must infiltrate the city, neutralize outlaws and survive sandstorms as they attempt to determine what happened to Konrad and his men. Through the narrative in the trailer and sound clips from the game's website it is hinted that Konrad may not have entirely genuine motivations for remaining in Dubai against orders.",
+        "summary": "A third-person shooter in which three American soldiers led by Capt. Walker are sent to Dubai in order to recover whoever remains of an infantry unit, the 33rd Battalion, until they decide to take action against the militants situated in the city. As they progress, however, the logistical and ethical complexity of their objective deepens, and their perception of themselves, and their enemy, is put into question.",
+        "total_rating": 79.42482021649383,
+        "url": "https://www.igdb.com/games/spec-ops-the-line"
+    },
+    {
+        "id": 1378,
+        "cover": {
+            "id": 118645,
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co2jjp.jpg"
+        },
+        "game_modes": [
+            {
+                "id": 1,
+                "name": "Single player"
+            },
+            {
+                "id": 2,
+                "name": "Multiplayer"
+            }
+        ],
+        "name": "R.U.S.E.",
+        "screenshots": [
+            {
+                "id": 140601,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/kdlauggtq4bxjx8wxppt.jpg"
+            },
+            {
+                "id": 140602,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/vvrmrzypqahmxtu6nsmt.jpg"
+            },
+            {
+                "id": 140603,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/xgxiyvfg8assavlrizyw.jpg"
+            },
+            {
+                "id": 140604,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/fabqczg4pnmrrvj4th5m.jpg"
+            },
+            {
+                "id": 141043,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/hjtkch6kozomc0ztxvrk.jpg"
+            }
+        ],
+        "status": 8,
+        "storyline": "R.U.S.E. takes place during World War II. The game contains a single story arc, portrayed through the perspective of Joseph Sheridan of the United States Army. Sheridan, a Harvard dropout, joins the U.S Army and eventually assumes control of the First Armored Division. The game opens in 1945 as General Sheridan liberates Colditz Castle to free an undercover operative, code named Nightingale, who knows the identity of an Axis informer, code named Prometheus. Sheridan then reminisces to 1943 when he was a Major during the Allied North African campaign when leaked information led to devastating Allied losses at the Battle of Kasserine. Sheridan meets British intelligence officer Colonel Andrew Campbell, and working together, in spite of Sheridan's inept commanding officer General Weatherby, they are able to turn the tide of battle. Sheridan is promoted to Lieutenant Colonel for his efforts.\n\nIn 1943, Sheridan takes part in the Battle of Monte Cassino, and while he disobeys Weatherby's direct orders to confuse German intelligence, Sheridan is able to push the Germans back and open up the road to Rome. Sheridan is promoted to General and meets Kate Garner, an attaché from the American War Office. At a victory party, Campbell remarks that the Germans are not fully defeated yet and that Sheridan is turning into Weatherby now that he has been promoted.\n\nIn 1944, Sheridan is in command of US troops landing at Utah beach on D-Day, with Weatherby in command of Omaha beach. Sheridan is able to secure a beach head and defend it against counter-attacks despite Weatherby's inability to secure Sheridan's flank. The operation in Normandy is hampered by inaccurate information given to Campbell by the French resistance; this, along with remarks from Kate, strains Sheridan and Campbell's friendship.\n\nLater that year, Sheridan is placed in command of forces in Operation Market Garden, and Weatherby is discreetly placed in command of forces \"in reserve\". After an exchange between Campbell and Kate, Campbell remarks that he cannot offer the same \"incentives\" as Kate and states that he will request a transfer. Despite Kate's insistence that Joe has \"outgrown\" Campbell, Joe is still clearly bothered by the British Officer's departure.\n\nDespite deeply inaccurate information on Axis forces in the area, Sheridan is able to keep \"The Highway to Hell\" open. However the British forces at the final bridge to be secured are forced to surrender, thus ending Market Garden as a failure. Kate leaves for Washington D.C. for a new \"promotion\" leaving Joe feeling sorry for himself.\n\nThree months later Sheridan and Campbell meet on the Belgian front, and the two make amends, with Sheridan apologizing and telling Campbell that \"he was right and that they should have listened to Campbell\". With Campbell's help Sheridan manages to hold onto the key city of Bastogne during the Battle of the Bulge. During the siege, General von Richtor, a German general who gave Sheridan much trouble in the past, personally requests Sheridan surrender. He reveals that the Germans have received orders not to take prisoners of war any more, but despite this, offers to guarantee the safety of Sheridan and his men if they surrender honorably. Sheridan refuses, only demanding to know how an honorable man like von Richtor could serve the Axis. After pushing back the German offensive Sheridan and Campbell interrogate General Von Richter upon capturing him. Learning that only the head of the German Intelligence Service, the Abwehr, Admiral Canaris, knew the identity of the spy Prometheus, but the Admiral had been arrested for plotting to kill Hitler.\n\nReturning to the present, Sheridan, Campbell and the undercover agent, Angie, head for Torgau on the Elbe to supposedly meet up with the Soviets. However, the meeting turns into a race to reach the secret weapons research facility in Torgau before the Russians do. In order to avoid a \"diplomatic incident\", Sheridan receives help from an unlikely ally: General Von Richtor, who also does not want the weapons to end up in Soviet hands. Under the cover of Von Richtor's German troops, Sheridan and his men reach the weapons facility in the Soviet zone and destroy it. In the process Sheridan learns Prometheus's is his former attaché Kate Garner. It is revealed that Kate had not only been giving intel to the Germans on the American forces but that she also had been giving intel to the Soviets on German weapon research. The weapons in question are long range V2 Rockets equipped with nuclear warheads. Despite having destroyed the research facility Sheridan learns that Kate had already moved several rockets to another location.\n\nSheridan and Campbell prepare to attack Kate's base and destroy the weapons, but are forced to re-think their strategy when Joe receives a warning from Kate that she will use the V2 rockets if they continue to provoke her. Sheridans assures Kate that he won't back off, and Kate simply responds that Sheridan will be \"rolled over by the modern world\" as communism will be inevitably victorious. Good news arrives when the Soviet Government declares the 8th Guards Army (the branch of the Soviet military Kate was working with) is an extremist renegade faction and Allied Commander General Eisenhower orders a full scale assault on Kate's base. With the help of some newly developed nuclear equipped artillery, Sheridan manages to destroy Kate's base, destroying the German nuclear warheads and killing Kate in an atomic blast. At the end, Sheridan expresses his wish to take a vacation and see Europe \"without the bullets\".",
+        "summary": "R.U.S.E is a one-of-a-kind real-time strategy game that allows players to bluff their enemies to lead their nation to victory, controlling the action using views that range seamlessly from the heart of the battlefield to the full theatre of war. Players will be plunged into the action thanks to the exclusive IRISZOOM engine which offers an intuitive interface that allows for smooth, rapid transitions from a birds-eye view of the entire conflict, down into the heat of the battle and vice versa.\n\nIn R.U.S.E, your brain is your ultimate weapon as you fight a war of perception, where your ability to deceive and mislead your enemy determines success. A first in a strategy game, R.U.S.E reinvigorates the genre by using deception to give new-found depth to the gameplay.",
+        "total_rating": 75.10123520335578,
+        "url": "https://www.igdb.com/games/ruse"
+    },
+    {
+        "id": 1595,
+        "cover": {
+            "id": 351862,
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/co7jhy.jpg"
+        },
+        "game_modes": [
+            {
+                "id": 1,
+                "name": "Single player"
+            },
+            {
+                "id": 2,
+                "name": "Multiplayer"
+            },
+            {
+                "id": 5,
+                "name": "Massively Multiplayer Online (MMO)"
+            }
+        ],
+        "name": "Star Citizen",
+        "screenshots": [
+            {
+                "id": 671117,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scedu5.jpg"
+            },
+            {
+                "id": 671118,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scedu6.jpg"
+            },
+            {
+                "id": 671119,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scedu7.jpg"
+            },
+            {
+                "id": 671120,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scedu8.jpg"
+            },
+            {
+                "id": 671121,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scedu9.jpg"
+            },
+            {
+                "id": 671122,
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/scedua.jpg"
+            }
+        ],
+        "status": 2,
+        "storyline": "The hum of the fusion drive reverberates through the ship's hull. It reminds you that you should probably replace it soon. A quick check on the MobiGlas says there's an Aegis showroom on the planet you're heading to. Couldn't hurt to see what they got, right?\n\nWith the Credits you make delivering this cargo, you should be able to buy your ship a little treat. Besides, she's your bread and butter. You roll on your side and look out the window at the vast yawning space outside. A distant planet silently orbits a dying sun.",
+        "summary": "Star Citizen is a sandbox open-world MMO \"SpaceSim\" by Cloud Imperium Games. Explore the 'verse, fight, trade, and more when you play Star Citizen!",
+        "total_rating": 81.66993823570144,
+        "url": "https://www.igdb.com/games/star-citizen"
     }
 ]

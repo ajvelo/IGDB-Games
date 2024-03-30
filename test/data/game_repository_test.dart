@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:igdb_games/core/server_exception.dart';
+import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/data/game_model.dart';
 import 'package:igdb_games/data/game_remote_datasource.dart';
 import 'package:igdb_games/data/game_repository.dart';
@@ -15,23 +16,27 @@ void main() {
   final mockRemoteDataSource = MockRemoteDataSource();
   final mockLocalDataSource = MockLocalDataSource();
   const game = Game(
-    screenshot: null,
-    storyLine: null,
+    screenshot: ['screenshot'],
+    storyLine: 'storyLine',
     id: 1,
     name: 'name',
     imageCover: 'imageCover',
     summary: 'summary',
+    status: Status.alpha,
     totalRating: 0.0,
   );
+  const gameMode = GameMode(id: 1, name: 'name');
+  const gameImage = GameImage(id: 1, url: 'screenshot');
   const gameModel = GameModel(
       id: 1,
       cover: GameImage(id: 1, url: 'imageCover'),
-      gameModes: null,
+      gameModes: [gameMode],
       name: 'name',
-      screenshots: null,
-      storyline: null,
+      screenshots: [gameImage],
+      storyline: 'storyLine',
       summary: 'summary',
       totalRating: 0.0,
+      status: 2,
       url: 'url');
   final repository = GameRepositoryImpl(
       localDatasource: mockLocalDataSource,
@@ -42,7 +47,7 @@ void main() {
       when(() => mockRemoteDataSource.fetchGames())
           .thenAnswer((_) async => [gameModel]);
       when(() => mockLocalDataSource.saveGames([game]))
-          .thenAnswer((invocation) => Future.value());
+          .thenAnswer((invocation) async => Future.value());
 
       final result = await repository.fetchGames(isRefresh: true);
 

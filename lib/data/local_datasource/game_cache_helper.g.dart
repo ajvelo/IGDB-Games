@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Game` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `summary` TEXT NOT NULL, `imageCover` TEXT NOT NULL, `screenshot` TEXT, `storyLine` TEXT, `totalRating` REAL NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Game` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `summary` TEXT NOT NULL, `imageCover` TEXT NOT NULL, `screenshot` TEXT NOT NULL, `storyLine` TEXT NOT NULL, `totalRating` REAL NOT NULL, `status` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -114,7 +114,8 @@ class _$GameDao extends GameDao {
                   'imageCover': item.imageCover,
                   'screenshot': _stringListConverter.encode(item.screenshot),
                   'storyLine': item.storyLine,
-                  'totalRating': item.totalRating
+                  'totalRating': item.totalRating,
+                  'status': item.status.index
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -132,11 +133,12 @@ class _$GameDao extends GameDao {
             id: row['id'] as int,
             name: row['name'] as String,
             imageCover: row['imageCover'] as String,
-            storyLine: row['storyLine'] as String?,
+            storyLine: row['storyLine'] as String,
             summary: row['summary'] as String,
             totalRating: row['totalRating'] as double,
             screenshot:
-                _stringListConverter.decode(row['screenshot'] as String)));
+                _stringListConverter.decode(row['screenshot'] as String),
+            status: Status.values[row['status'] as int]));
   }
 
   @override
@@ -152,11 +154,12 @@ class _$GameDao extends GameDao {
             id: row['id'] as int,
             name: row['name'] as String,
             imageCover: row['imageCover'] as String,
-            storyLine: row['storyLine'] as String?,
+            storyLine: row['storyLine'] as String,
             summary: row['summary'] as String,
             totalRating: row['totalRating'] as double,
             screenshot:
-                _stringListConverter.decode(row['screenshot'] as String)),
+                _stringListConverter.decode(row['screenshot'] as String),
+            status: Status.values[row['status'] as int]),
         arguments: [id]);
   }
 
