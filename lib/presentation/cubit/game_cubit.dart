@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
 import 'package:igdb_games/domain/game_repostiory_abstract.dart';
 import 'package:igdb_games/presentation/cubit/game_state.dart';
@@ -22,6 +23,17 @@ class GameCubit extends Cubit<GameState> {
     emit(GameLoadingState());
     try {
       final result = await gameRepository.fetchGames(isRefresh: isRefresh);
+      emit(GameLoadedState(games: result));
+    } catch (e) {
+      emit(GameErrorState(error: _handleErrors(error: e)));
+    }
+  }
+
+  filterBy({required FilterEnum filter, required bool isAscending}) async {
+    emit(GameLoadingState());
+    try {
+      final result = await gameRepository.filterBy(
+          filter: filter, isAscending: isAscending);
       emit(GameLoadedState(games: result));
     } catch (e) {
       emit(GameErrorState(error: _handleErrors(error: e)));

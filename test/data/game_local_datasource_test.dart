@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
 import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/data/local_datasource/game_dao.dart';
@@ -12,15 +13,35 @@ void main() {
   final gameDao = MockGameDao();
   final localDataSource = GameLocalDatasourceImpl(dao: gameDao);
 
-  const game = Game(
+  const firstGame = Game(
     screenshot: [""],
     status: Status.alpha,
     storyLine: "",
     id: 1,
-    name: 'name',
+    name: 'A',
     imageCover: 'imageCover',
     summary: 'summary',
-    totalRating: 0.0,
+    totalRating: 50.0,
+  );
+  const secondGame = Game(
+    screenshot: [""],
+    status: Status.alpha,
+    storyLine: "",
+    id: 1,
+    name: 'B',
+    imageCover: 'imageCover',
+    summary: 'summary',
+    totalRating: 20.0,
+  );
+  const thirdGame = Game(
+    screenshot: [""],
+    status: Status.alpha,
+    storyLine: "",
+    id: 1,
+    name: 'C',
+    imageCover: 'imageCover',
+    summary: 'summary',
+    totalRating: 10.0,
   );
 
   group('Fetch games', () {
@@ -35,13 +56,36 @@ void main() {
     });
 
     test('Should succesfully return games when they are found', () async {
-      when(() => gameDao.findAllGames())
-          .thenAnswer((invocation) async => Future.value([game]));
+      when(() => gameDao.findAllGames()).thenAnswer(
+          (invocation) async => Future.value([firstGame, secondGame]));
 
       final result = await localDataSource.fetchGames();
 
-      expect(result.length, 1);
-      expect(result.first, game);
+      expect(result.length, 2);
+    });
+  });
+
+  group('Filter By', () {
+    test('Should succesfully filter games by name', () async {
+      when(() => gameDao.findAllGames()).thenAnswer((invocation) async =>
+          Future.value([secondGame, thirdGame, firstGame]));
+
+      final result = await localDataSource.filterBy(
+          filter: FilterEnum.name, isAscending: true);
+
+      expect(result.length, 3);
+      expect(result, [firstGame, secondGame, thirdGame]);
+    });
+
+    test('Should succesfully filter games by rank', () async {
+      when(() => gameDao.findAllGames()).thenAnswer((invocation) async =>
+          Future.value([thirdGame, firstGame, secondGame]));
+
+      final result = await localDataSource.filterBy(
+          filter: FilterEnum.ranking, isAscending: true);
+
+      expect(result.length, 3);
+      expect(result, [firstGame, secondGame, thirdGame]);
     });
   });
 }

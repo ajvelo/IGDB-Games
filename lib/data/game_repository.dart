@@ -1,3 +1,4 @@
+import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
 import 'package:igdb_games/data/game_model.dart';
 import 'package:igdb_games/data/game_remote_datasource.dart';
@@ -36,6 +37,18 @@ class GameRepositoryImpl implements GameRepository {
       } else {
         throw e.toString();
       }
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  @override
+  Future<List<Game>> filterBy(
+      {required FilterEnum filter, required bool isAscending}) async {
+    try {
+      final gamesFromCache = await localDatasource.filterBy(
+          filter: filter, isAscending: isAscending);
+      return gamesFromCache;
     } catch (e) {
       throw e.toString();
     }

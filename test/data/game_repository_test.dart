@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
 import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/data/game_model.dart';
@@ -24,6 +25,16 @@ void main() {
     summary: 'summary',
     status: Status.alpha,
     totalRating: 0.0,
+  );
+  const secondGame = Game(
+    screenshot: ['screenshot'],
+    storyLine: 'storyLine',
+    id: 1,
+    name: 'Z',
+    imageCover: 'imageCover',
+    summary: 'summary',
+    status: Status.alpha,
+    totalRating: 10.0,
   );
   const gameMode = GameMode(id: 1, name: 'name');
   const gameImage = GameImage(id: 1, url: 'screenshot');
@@ -70,6 +81,29 @@ void main() {
       verify(() => mockRemoteDataSource.fetchGames()).called(1);
       expect(result.length, 1);
       expect(result.first, game);
+    });
+  });
+
+  group('Filter By', () {
+    test('Should call local data source to filter games', () async {
+      when(() => mockLocalDataSource.filterBy(
+          filter: FilterEnum.name,
+          isAscending: true)).thenAnswer((invocation) async => [game]);
+
+      await repository.filterBy(filter: FilterEnum.name, isAscending: true);
+
+      verify(() => mockLocalDataSource.filterBy(
+          filter: FilterEnum.name, isAscending: true)).called(1);
+    });
+    test('Should successfully return ordered games by name', () async {
+      when(() => mockLocalDataSource.filterBy(
+              filter: FilterEnum.name, isAscending: true))
+          .thenAnswer((invocation) async => [game, secondGame]);
+
+      final result =
+          await repository.filterBy(filter: FilterEnum.name, isAscending: true);
+
+      expect(result, [game, secondGame]);
     });
   });
 }

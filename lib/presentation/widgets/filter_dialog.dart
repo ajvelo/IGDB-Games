@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/presentation/cubit/game_cubit.dart';
 
 class FilterOptionsDialog extends StatelessWidget {
@@ -31,19 +32,45 @@ class FilterOptionsDialog extends StatelessWidget {
           const SizedBox(height: 16.0),
           _buildFilterOption(
             context,
-            'by Name',
+            'Name (A to Z)',
             Icons.sort_by_alpha,
             () {
-              context.read<GameCubit>().fetchGames(isRefresh: true);
+              context
+                  .read<GameCubit>()
+                  .filterBy(filter: FilterEnum.name, isAscending: true);
               Navigator.of(context).pop();
             },
           ),
           _buildFilterOption(
             context,
-            'Filter by Rank',
+            'Name (Z to A)',
             Icons.star,
             () {
-              print('Filter by Total Ranking');
+              context
+                  .read<GameCubit>()
+                  .filterBy(filter: FilterEnum.ranking, isAscending: false);
+              Navigator.of(context).pop();
+            },
+          ),
+          _buildFilterOption(
+            context,
+            'Rank (Highest to Lowest)',
+            Icons.sort_by_alpha,
+            () {
+              context
+                  .read<GameCubit>()
+                  .filterBy(filter: FilterEnum.ranking, isAscending: true);
+              Navigator.of(context).pop();
+            },
+          ),
+          _buildFilterOption(
+            context,
+            'Rank (Lowest to Highest)',
+            Icons.star,
+            () {
+              context
+                  .read<GameCubit>()
+                  .filterBy(filter: FilterEnum.ranking, isAscending: false);
               Navigator.of(context).pop();
             },
           ),
@@ -57,7 +84,7 @@ class FilterOptionsDialog extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Text(
-          'Select A Filter ',
+          'Filter By:',
           style: TextStyle(
             fontSize: 24.0,
             fontWeight: FontWeight.bold,
