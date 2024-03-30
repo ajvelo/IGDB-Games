@@ -54,7 +54,7 @@ class FilterOptionsDialog extends StatelessWidget {
           ),
           _buildFilterOption(
             context,
-            'Rank (Highest to Lowest)',
+            'Rank (High to Low)',
             Icons.sort_by_alpha,
             () {
               context
@@ -65,7 +65,7 @@ class FilterOptionsDialog extends StatelessWidget {
           ),
           _buildFilterOption(
             context,
-            'Rank (Lowest to Highest)',
+            'Rank (Low to High)',
             Icons.star,
             () {
               context
@@ -126,7 +126,7 @@ class FilterOptionsDialog extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                fontSize: 16.0,
+                fontSize: 14.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),

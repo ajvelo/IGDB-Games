@@ -47,8 +47,7 @@ void main() {
       storyline: 'storyLine',
       summary: 'summary',
       totalRating: 0.0,
-      status: 2,
-      url: 'url');
+      status: 2);
   final repository = GameRepositoryImpl(
       localDatasource: mockLocalDataSource,
       remoteDatasource: mockRemoteDataSource);

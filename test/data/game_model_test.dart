@@ -24,8 +24,7 @@ void main() {
                 "//images.igdb.com/igdb/image/upload/t_thumb/r4gzsrbgwlqvdm3u64sl.jpg"),
       ],
       summary: "summary",
-      totalRating: 74.82126012744726,
-      url: "https://www.igdb.com/games/hellgate-london");
+      totalRating: 74.82126012744726);
 
   Future<List<dynamic>> readJson(String fileName) async {
     final String response = await File(fileName).readAsString();
@@ -45,7 +44,6 @@ void main() {
       expect(firstResult.cover, gameModel.cover);
       expect(firstResult.screenshots, gameModel.screenshots);
       expect(firstResult.gameModes, gameModel.gameModes);
-      expect(firstResult.url, gameModel.url);
       expect(firstResult.name, gameModel.name);
       expect(firstResult.storyline, gameModel.storyline);
     });

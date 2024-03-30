@@ -11,7 +11,6 @@ class GameModel extends Equatable {
   final String storyline;
   final String summary;
   final double totalRating;
-  final String url;
   final int status;
 
   const GameModel(
@@ -23,7 +22,6 @@ class GameModel extends Equatable {
       required this.storyline,
       required this.summary,
       required this.totalRating,
-      required this.url,
       required this.status});
 
   factory GameModel.fromJson(Map<String, dynamic> json) => GameModel(
@@ -37,21 +35,11 @@ class GameModel extends Equatable {
       storyline: json["storyline"],
       summary: json["summary"],
       totalRating: json["total_rating"],
-      url: json["url"],
       status: json["status"]);
 
   @override
-  List<Object?> get props => [
-        id,
-        cover,
-        gameModes,
-        name,
-        screenshots,
-        storyline,
-        summary,
-        url,
-        status
-      ];
+  List<Object?> get props =>
+      [id, cover, gameModes, name, screenshots, storyline, summary, status];
 }
 
 class GameImage extends Equatable {
