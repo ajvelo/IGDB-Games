@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:igdb_games/core/filter.dart';
+import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/presentation/cubit/game/game_cubit.dart';
 
 class FilterOptionsDialog extends StatelessWidget {
@@ -30,50 +33,47 @@ class FilterOptionsDialog extends StatelessWidget {
         children: [
           _buildHeader(context),
           const SizedBox(height: 16.0),
-          _buildFilterOption(
-            context,
-            'Name (A to Z)',
-            Icons.sort_by_alpha,
-            () {
-              context
-                  .read<GameCubit>()
-                  .filterBy(filter: FilterEnum.name, isAscending: true);
-              Navigator.of(context).pop();
-            },
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: (Status.values)
+                  .map(
+                    (status) => Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: _buildFilterOption(context, status.displayName,
+                          Icons.change_circle_outlined, () {
+                        context.read<GameCubit>().filterBy(
+                            filter: FilterEnum.status,
+                            status: status,
+                            isAscending: true);
+                        Navigator.of(context).pop();
+                      }, status),
+                    ),
+                  )
+                  .toList(),
+            ),
           ),
-          _buildFilterOption(
-            context,
-            'Name (Z to A)',
-            Icons.star,
-            () {
-              context
-                  .read<GameCubit>()
-                  .filterBy(filter: FilterEnum.ranking, isAscending: false);
-              Navigator.of(context).pop();
-            },
-          ),
-          _buildFilterOption(
-            context,
-            'Rank (High to Low)',
-            Icons.sort_by_alpha,
-            () {
-              context
-                  .read<GameCubit>()
-                  .filterBy(filter: FilterEnum.ranking, isAscending: true);
-              Navigator.of(context).pop();
-            },
-          ),
-          _buildFilterOption(
-            context,
-            'Rank (Low to High)',
-            Icons.star,
-            () {
-              context
-                  .read<GameCubit>()
-                  .filterBy(filter: FilterEnum.ranking, isAscending: false);
-              Navigator.of(context).pop();
-            },
-          ),
+          _buildFilterOption(context, 'Name (A to Z)', Icons.sort_by_alpha, () {
+            context.read<GameCubit>().filterBy(
+                filter: FilterEnum.name, status: null, isAscending: true);
+            Navigator.of(context).pop();
+          }, null),
+          _buildFilterOption(context, 'Name (Z to A)', Icons.star, () {
+            context.read<GameCubit>().filterBy(
+                filter: FilterEnum.ranking, status: null, isAscending: false);
+            Navigator.of(context).pop();
+          }, null),
+          _buildFilterOption(context, 'Rank (High to Low)', Icons.sort_by_alpha,
+              () {
+            context.read<GameCubit>().filterBy(
+                filter: FilterEnum.ranking, status: null, isAscending: true);
+            Navigator.of(context).pop();
+          }, null),
+          _buildFilterOption(context, 'Rank (Low to High)', Icons.star, () {
+            context.read<GameCubit>().filterBy(
+                filter: FilterEnum.ranking, status: null, isAscending: false);
+            Navigator.of(context).pop();
+          }, null),
         ],
       ),
     );
@@ -97,15 +97,16 @@ class FilterOptionsDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildFilterOption(
-      BuildContext context, String title, IconData icon, VoidCallback onTap) {
+  Widget _buildFilterOption(BuildContext context, String title, IconData icon,
+      VoidCallback onTap, Status? status) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8.0),
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
-          color: Colors.blue.withOpacity(0.8),
+          color:
+              status != null ? status.badgeColor : Colors.blue.withOpacity(0.8),
           borderRadius: BorderRadius.circular(15.0),
         ),
         child: Row(

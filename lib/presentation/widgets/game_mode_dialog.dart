@@ -33,7 +33,7 @@ class GameModeDialog extends StatelessWidget {
       title: Row(
         children: [
           Text('Modes:', style: Theme.of(context).textTheme.bodyLarge),
-          Spacer(),
+          const Spacer(),
           const Icon(
             Icons.gamepad,
             color: Colors.blue,
