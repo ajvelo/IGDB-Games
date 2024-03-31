@@ -3,6 +3,7 @@ import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
 import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/data/models/game_model.dart';
+import 'package:igdb_games/data/models/screenshot_model.dart';
 import 'package:igdb_games/data/remote_datasource/game_remote_datasource.dart';
 import 'package:igdb_games/data/game_repository.dart';
 import 'package:igdb_games/data/local_datasource/game_local_datasource.dart';
@@ -44,12 +45,17 @@ void main() {
       summary: 'summary',
       totalRating: 0.0,
       status: 2);
+  const screenShotModel = ScreenShotModel(
+      id: 714,
+      gameId: 325,
+      url:
+          "//images.igdb.com/igdb/image/upload/t_thumb/lcnxec5nvnspzrf10ybd.jpg");
   final repository = GameRepositoryImpl(
       localDatasource: mockLocalDataSource,
       remoteDatasource: mockRemoteDataSource);
 
   group('Fetch Games', () {
-    test('Fetch posts returns list of posts when successful', () async {
+    test('Fetch games returns list of games when successful', () async {
       when(() => mockRemoteDataSource.fetchGames())
           .thenAnswer((_) async => [gameModel]);
       when(() => mockLocalDataSource.saveGames([game]))
@@ -62,7 +68,7 @@ void main() {
       expect(result.length, 1);
       expect(result.first, game);
     });
-    test('Calls Fetch posts on CacheException when games are empty', () async {
+    test('Calls Fetch games on CacheException when games are empty', () async {
       when(() => mockRemoteDataSource.fetchGames())
           .thenAnswer((_) async => [gameModel]);
       when(() => mockLocalDataSource.fetchGames())
@@ -76,6 +82,18 @@ void main() {
       verify(() => mockRemoteDataSource.fetchGames()).called(1);
       expect(result.length, 1);
       expect(result.first, game);
+    });
+
+    test('Throws ServerException when remote data source fails', () async {
+      when(() => mockRemoteDataSource.fetchGames())
+          .thenThrow(ServerException(message: 'error'));
+
+      try {
+        await repository.fetchGames(isRefresh: true);
+      } catch (e) {
+        expect(e, isA<ServerException>());
+        expect((e as ServerException).message, 'error');
+      }
     });
   });
 
@@ -99,6 +117,31 @@ void main() {
           await repository.filterBy(filter: FilterEnum.name, isAscending: true);
 
       expect(result, [game, secondGame]);
+    });
+  });
+
+  group('Fetch Screnshots', () {
+    test('Fetch screenshots returns list of games when successful', () async {
+      when(() => mockRemoteDataSource.fetchScreenShots(gameId: 325))
+          .thenAnswer((_) async => [screenShotModel]);
+
+      final result = await repository.fetchScreenShots(gameId: 325);
+
+      verify(() => mockRemoteDataSource.fetchScreenShots(gameId: 325))
+          .called(1);
+      expect(result.length, 1);
+      expect(result.first, screenShotModel.url);
+    });
+    test('Calls throw ServerException when remote data source fails', () async {
+      when(() => mockRemoteDataSource.fetchScreenShots(gameId: 325))
+          .thenThrow(ServerException(message: 'error'));
+
+      try {
+        await repository.fetchScreenShots(gameId: 325);
+      } catch (e) {
+        expect(e, isA<ServerException>());
+        expect((e as ServerException).message, 'error');
+      }
     });
   });
 }

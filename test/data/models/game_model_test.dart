@@ -27,9 +27,9 @@ void main() {
 
   group('Model matches JSON', () {
     test('Model is able to be deserialized', () async {
-      final json = await readJson('test/data/game_fixtures.json');
+      final json = await readJson('test/data/fixtures/game_fixtures.json');
       final gameModels =
-          json.map((postModel) => GameModel.fromJson(postModel)).toList();
+          json.map((model) => GameModel.fromJson(model)).toList();
       final firstResult = gameModels.first;
       expect(gameModels.length, 10);
       expect(firstResult.totalRating, gameModel.totalRating);

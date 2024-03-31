@@ -30,14 +30,15 @@ class GameRepositoryImpl implements GameRepository {
         return gamesFromCache;
       }
     } on ServerException catch (e) {
-      throw e.toString();
+      throw ServerException(message: e.message);
     } on CacheException catch (e) {
       if (e.message == 'empty') {
         return _fetchFromRemote();
       } else {
-        throw e.toString();
+        throw e.message;
       }
     } catch (e) {
+      if (e is ServerException) rethrow;
       throw e.toString();
     }
   }
@@ -60,7 +61,10 @@ class GameRepositoryImpl implements GameRepository {
       final screenshots =
           await remoteDatasource.fetchScreenShots(gameId: gameId);
       return screenshots.map((e) => e.url).toList();
+    } on ServerException catch (e) {
+      throw ServerException(message: e.message);
     } catch (e) {
+      if (e is ServerException) rethrow;
       throw e.toString();
     }
   }

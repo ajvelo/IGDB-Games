@@ -9,10 +9,10 @@ import 'package:igdb_games/presentation/cubit/game/game_cubit.dart';
 import 'package:igdb_games/presentation/cubit/game/game_state.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockPostRepository extends Mock implements GameRepository {}
+class MockGameRepository extends Mock implements GameRepository {}
 
 void main() {
-  final mockPostRepository = MockPostRepository();
+  final mockGameRepository = MockGameRepository();
   late GameCubit gameCubit;
   const game = Game(
     storyLine: 'storyLine',
@@ -25,7 +25,7 @@ void main() {
   );
 
   setUp(() {
-    gameCubit = GameCubit(gameRepository: mockPostRepository);
+    gameCubit = GameCubit(gameRepository: mockGameRepository);
   });
   group('Fetch Games', () {
     test('Initial state should be GameStateInitial', () {
@@ -33,7 +33,7 @@ void main() {
     });
     blocTest('fetch games emits corrects states when succesfull',
         build: () {
-          when(() => mockPostRepository.fetchGames(isRefresh: false))
+          when(() => mockGameRepository.fetchGames(isRefresh: false))
               .thenAnswer((invocation) async => [game]);
           return gameCubit;
         },
@@ -45,7 +45,7 @@ void main() {
 
     blocTest('fetch games emits corrects states when unsuccesfull',
         build: () {
-          when(() => mockPostRepository.fetchGames(isRefresh: false))
+          when(() => mockGameRepository.fetchGames(isRefresh: false))
               .thenThrow(ServerException(message: 'Unknown'));
           return gameCubit;
         },
@@ -59,7 +59,7 @@ void main() {
     });
     blocTest('filter by  emits corrects states when succesfull',
         build: () {
-          when(() => mockPostRepository.filterBy(
+          when(() => mockGameRepository.filterBy(
               filter: FilterEnum.name,
               isAscending: true)).thenAnswer((invocation) async => [game]);
           return gameCubit;
@@ -73,7 +73,7 @@ void main() {
 
     blocTest('filter by emits corrects states when unsuccesfull',
         build: () {
-          when(() => mockPostRepository.filterBy(
+          when(() => mockGameRepository.filterBy(
               filter: FilterEnum.name,
               isAscending: true)).thenThrow(CacheException(message: 'Unknown'));
           return gameCubit;
