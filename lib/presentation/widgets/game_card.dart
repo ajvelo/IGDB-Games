@@ -20,6 +20,7 @@ class GameCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(
@@ -47,17 +48,11 @@ class GameCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  name,
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text(name, style: textTheme.headlineLarge),
                 const SizedBox(height: 8.0),
                 Text(
                   summary,
-                  style: const TextStyle(fontSize: 14.0),
+                  style: textTheme.bodyMedium,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -66,13 +61,8 @@ class GameCard extends StatelessWidget {
                   children: [
                     const Icon(Icons.star, color: Colors.amber),
                     const SizedBox(width: 4.0),
-                    Text(
-                      ranking.toStringAsFixed(1),
-                      style: const TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    Text(ranking.toStringAsFixed(1),
+                        style: textTheme.headlineMedium),
                     const Spacer(),
                     StatusBadge(status: status)
                   ],

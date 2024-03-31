@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:igdb_games/core/theme.dart';
 import 'package:igdb_games/presentation/cubit/game/game_cubit.dart';
 import 'package:igdb_games/presentation/cubit/screenshot/screenshot_cubit.dart';
 import 'package:igdb_games/presentation/pages/main_page.dart';
@@ -26,14 +27,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => dependency.sl<ScreenshotCubit>())
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        home: const MainPage(),
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-      ),
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          home: const MainPage(),
+          theme: GlobalTheme.themeData),
     );
   }
 }

@@ -18,3 +18,18 @@ class StatusIntConverter extends TypeConverter<Status, String> {
     return json.encode(data);
   }
 }
+
+class StringListConverter extends TypeConverter<List<String>, String> {
+  @override
+  List<String> decode(String databaseValue) {
+    final jsonFile = json.decode(databaseValue);
+    return List<String>.from(jsonFile['gamemodes']).toList();
+  }
+
+  @override
+  String encode(List<String> value) {
+    final data = <String, dynamic>{};
+    data.addAll({'gamemodes': value});
+    return json.encode(data);
+  }
+}

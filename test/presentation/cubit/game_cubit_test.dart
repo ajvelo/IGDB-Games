@@ -16,6 +16,7 @@ void main() {
   late GameCubit gameCubit;
   const game = Game(
     storyLine: 'storyLine',
+    gameModes: ['url'],
     id: 1,
     name: 'name',
     imageCover: 'imageCover',

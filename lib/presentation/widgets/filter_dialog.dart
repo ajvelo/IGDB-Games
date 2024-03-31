@@ -83,14 +83,7 @@ class FilterOptionsDialog extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
-          'Filter By:',
-          style: TextStyle(
-            fontSize: 24.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.blue,
-          ),
-        ),
+        Text('Filter By:', style: Theme.of(context).textTheme.headlineMedium),
         IconButton(
           icon: const Icon(
             Icons.close,
@@ -123,14 +116,11 @@ class FilterOptionsDialog extends StatelessWidget {
               size: 28.0,
             ),
             const SizedBox(width: 8.0),
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
+            Text(title,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(color: Colors.white)),
           ],
         ),
       ),

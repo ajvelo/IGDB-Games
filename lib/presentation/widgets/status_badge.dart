@@ -14,10 +14,11 @@ class StatusBadge extends StatelessWidget {
         color: status.badgeColor,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Text(
-        status.displayName,
-        style: const TextStyle(color: Colors.white),
-      ),
+      child: Text(status.displayName,
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium!
+              .copyWith(color: Colors.white)),
     );
   }
 }

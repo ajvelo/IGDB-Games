@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Game` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `summary` TEXT NOT NULL, `imageCover` TEXT NOT NULL, `storyLine` TEXT NOT NULL, `totalRating` REAL NOT NULL, `status` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Game` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `summary` TEXT NOT NULL, `imageCover` TEXT NOT NULL, `storyLine` TEXT NOT NULL, `totalRating` REAL NOT NULL, `gameModes` TEXT NOT NULL, `status` TEXT NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -114,6 +114,7 @@ class _$GameDao extends GameDao {
                   'imageCover': item.imageCover,
                   'storyLine': item.storyLine,
                   'totalRating': item.totalRating,
+                  'gameModes': _stringListConverter.encode(item.gameModes),
                   'status': _statusIntConverter.encode(item.status)
                 });
 
@@ -135,6 +136,7 @@ class _$GameDao extends GameDao {
             storyLine: row['storyLine'] as String,
             summary: row['summary'] as String,
             totalRating: row['totalRating'] as double,
+            gameModes: _stringListConverter.decode(row['gameModes'] as String),
             status: _statusIntConverter.decode(row['status'] as String)));
   }
 
@@ -154,6 +156,7 @@ class _$GameDao extends GameDao {
             storyLine: row['storyLine'] as String,
             summary: row['summary'] as String,
             totalRating: row['totalRating'] as double,
+            gameModes: _stringListConverter.decode(row['gameModes'] as String),
             status: _statusIntConverter.decode(row['status'] as String)),
         arguments: [id]);
   }
@@ -166,3 +169,4 @@ class _$GameDao extends GameDao {
 
 // ignore_for_file: unused_element
 final _statusIntConverter = StatusIntConverter();
+final _stringListConverter = StringListConverter();

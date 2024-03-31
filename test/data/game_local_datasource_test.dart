@@ -14,6 +14,7 @@ void main() {
   final localDataSource = GameLocalDatasourceImpl(dao: gameDao);
 
   const firstGame = Game(
+    gameModes: ['url'],
     status: Status.alpha,
     storyLine: "",
     id: 1,
@@ -23,6 +24,7 @@ void main() {
     totalRating: 50.0,
   );
   const secondGame = Game(
+    gameModes: ['url'],
     status: Status.alpha,
     storyLine: "",
     id: 1,
@@ -32,6 +34,7 @@ void main() {
     totalRating: 20.0,
   );
   const thirdGame = Game(
+    gameModes: ['url'],
     status: Status.alpha,
     storyLine: "",
     id: 1,

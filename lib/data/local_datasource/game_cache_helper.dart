@@ -8,7 +8,7 @@ import 'package:sqflite/sqflite.dart' as sqflite;
 part 'game_cache_helper.g.dart';
 
 @Database(version: 1, entities: [Game])
-@TypeConverters([StatusIntConverter])
+@TypeConverters([StatusIntConverter, StringListConverter])
 abstract class AppDatabase extends FloorDatabase {
   GameDao get gameDao;
 }

@@ -83,6 +83,7 @@ extension GameModelExtension on GameModel {
         imageCover: cover.url,
         storyLine: storyline,
         totalRating: totalRating,
+        gameModes: gameModes.map((e) => e.name).toList(),
         status: Status.values.firstWhere((element) => element.value == status));
   }
 }

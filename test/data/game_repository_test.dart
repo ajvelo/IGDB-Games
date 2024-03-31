@@ -18,6 +18,7 @@ void main() {
   final mockRemoteDataSource = MockRemoteDataSource();
   final mockLocalDataSource = MockLocalDataSource();
   const game = Game(
+    gameModes: ['url'],
     storyLine: 'storyLine',
     id: 1,
     name: 'name',
@@ -27,6 +28,7 @@ void main() {
     totalRating: 0.0,
   );
   const secondGame = Game(
+    gameModes: ['url'],
     storyLine: 'storyLine',
     id: 1,
     name: 'Z',
@@ -35,7 +37,7 @@ void main() {
     status: Status.alpha,
     totalRating: 10.0,
   );
-  const gameMode = GameMode(id: 1, name: 'name');
+  const gameMode = GameMode(id: 1, name: 'url');
   const gameModel = GameModel(
       id: 1,
       cover: GameImage(id: 1, url: 'imageCover'),

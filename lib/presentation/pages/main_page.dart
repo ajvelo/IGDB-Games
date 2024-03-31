@@ -51,13 +51,8 @@ class MainPage extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => GameDetailPage(
-                                id: game.id,
-                                name: game.name,
-                                summary: game.summary,
-                                coverImageUrl: game.imageCover,
-                                storyline: game.storyLine,
-                                ranking: game.totalRating,
-                                status: game.status),
+                              game: game,
+                            ),
                           ));
                         },
                         child: GameCard(
