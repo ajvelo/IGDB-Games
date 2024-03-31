@@ -1,15 +1,12 @@
 import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
-import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/data/local_datasource/game_dao.dart';
 import 'package:igdb_games/domain/entities/game_entity.dart';
 
 abstract class GameLocalDatasource {
   Future<List<Game>> fetchGames();
   Future<List<Game>> filterBy(
-      {required FilterEnum filter,
-      required Status? status,
-      required bool isAscending});
+      {required FilterEnum filter, required bool isAscending});
   Future<void> saveGames(List<Game> games);
 }
 
@@ -40,9 +37,7 @@ class GameLocalDatasourceImpl implements GameLocalDatasource {
 
   @override
   Future<List<Game>> filterBy(
-      {required FilterEnum filter,
-      required Status? status,
-      required bool isAscending}) async {
+      {required FilterEnum filter, required bool isAscending}) async {
     final games = await fetchGames();
     switch (filter) {
       case FilterEnum.name:
@@ -57,10 +52,6 @@ class GameLocalDatasourceImpl implements GameLocalDatasource {
             ? games.sort((a, b) => b.totalRating.compareTo(a.totalRating))
             : games.sort((a, b) => a.totalRating.compareTo(b.totalRating));
         return games;
-      case FilterEnum.status:
-        final filteredGames =
-            games.where((game) => game.status == status).toList();
-        return filteredGames;
       default:
         return games;
     }

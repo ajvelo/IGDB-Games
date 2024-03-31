@@ -28,7 +28,7 @@ void main() {
                   response: Response(
                       requestOptions: RequestOptions(), statusCode: 400))));
       expect(
-          () => gameDataSource.fetchGames(),
+          () => gameDataSource.fetchGames(statusValue: null),
           throwsA(predicate(
               (p0) => p0 is ServerException && p0.message == '400 error')));
     });
@@ -46,7 +46,7 @@ void main() {
                   response: Response(
                       requestOptions: RequestOptions(), statusCode: 513))));
       expect(
-          () => gameDataSource.fetchGames(),
+          () => gameDataSource.fetchGames(statusValue: null),
           throwsA(predicate(
               (p0) => p0 is ServerException && p0.message == 'unknown error')));
     });
@@ -57,8 +57,23 @@ void main() {
           'https://api.igdb.com/v4/games',
           data: Matchers.any,
           (server) => server.reply(200, json));
-      final result = await gameDataSource.fetchGames();
+      final result = await gameDataSource.fetchGames(statusValue: null);
       expect(result.length, 10);
+    });
+
+    test(
+        'Should return list of game models with 200 of same status when status value is supplied',
+        () async {
+      final json =
+          await readJson('test/data/fixtures/game_fixtures_with_status.json');
+      dioAdapter.onPost(
+          'https://api.igdb.com/v4/games',
+          data: Matchers.any,
+          (server) => server.reply(200, json));
+      final result = await gameDataSource.fetchGames(statusValue: 2);
+      expect(result.length, 10);
+      final listOfGames = result.map((game) => game.status).toList();
+      expect(listOfGames.every((element) => element == 2), true);
     });
   });
 

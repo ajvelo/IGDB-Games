@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/status_enum.dart';
@@ -42,10 +40,8 @@ class FilterOptionsDialog extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 8),
                       child: _buildFilterOption(context, status.displayName,
                           Icons.change_circle_outlined, () {
-                        context.read<GameCubit>().filterBy(
-                            filter: FilterEnum.status,
-                            status: status,
-                            isAscending: true);
+                        context.read<GameCubit>().fetchGames(
+                            isRefresh: true, statusValue: status.value);
                         Navigator.of(context).pop();
                       }, status),
                     ),
@@ -54,24 +50,28 @@ class FilterOptionsDialog extends StatelessWidget {
             ),
           ),
           _buildFilterOption(context, 'Name (A to Z)', Icons.sort_by_alpha, () {
-            context.read<GameCubit>().filterBy(
-                filter: FilterEnum.name, status: null, isAscending: true);
+            context
+                .read<GameCubit>()
+                .filterBy(filter: FilterEnum.name, isAscending: true);
             Navigator.of(context).pop();
           }, null),
           _buildFilterOption(context, 'Name (Z to A)', Icons.star, () {
-            context.read<GameCubit>().filterBy(
-                filter: FilterEnum.ranking, status: null, isAscending: false);
+            context
+                .read<GameCubit>()
+                .filterBy(filter: FilterEnum.ranking, isAscending: false);
             Navigator.of(context).pop();
           }, null),
           _buildFilterOption(context, 'Rank (High to Low)', Icons.sort_by_alpha,
               () {
-            context.read<GameCubit>().filterBy(
-                filter: FilterEnum.ranking, status: null, isAscending: true);
+            context
+                .read<GameCubit>()
+                .filterBy(filter: FilterEnum.ranking, isAscending: true);
             Navigator.of(context).pop();
           }, null),
           _buildFilterOption(context, 'Rank (Low to High)', Icons.star, () {
-            context.read<GameCubit>().filterBy(
-                filter: FilterEnum.ranking, status: null, isAscending: false);
+            context
+                .read<GameCubit>()
+                .filterBy(filter: FilterEnum.ranking, isAscending: false);
             Navigator.of(context).pop();
           }, null),
         ],

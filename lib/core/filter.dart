@@ -1,1 +1,1 @@
-enum FilterEnum { name, ranking, status }
+enum FilterEnum { name, ranking }

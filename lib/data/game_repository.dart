@@ -1,6 +1,5 @@
 import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
-import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/data/models/game_model.dart';
 import 'package:igdb_games/data/remote_datasource/game_remote_datasource.dart';
 import 'package:igdb_games/data/local_datasource/game_local_datasource.dart';
@@ -14,18 +13,19 @@ class GameRepositoryImpl implements GameRepository {
   GameRepositoryImpl(
       {required this.localDatasource, required this.remoteDatasource});
 
-  Future<List<Game>> _fetchFromRemote() async {
-    final results = await remoteDatasource.fetchGames();
+  Future<List<Game>> _fetchFromRemote({required int? statusValue}) async {
+    final results = await remoteDatasource.fetchGames(statusValue: statusValue);
     final games = results.map((gameModels) => gameModels.toEntity()).toList();
     await localDatasource.saveGames(games);
     return games;
   }
 
   @override
-  Future<List<Game>> fetchGames({required bool isRefresh}) async {
+  Future<List<Game>> fetchGames(
+      {required bool isRefresh, required int? statusValue}) async {
     try {
       if (isRefresh) {
-        return _fetchFromRemote();
+        return _fetchFromRemote(statusValue: statusValue);
       } else {
         final gamesFromCache = await localDatasource.fetchGames();
         return gamesFromCache;
@@ -34,7 +34,7 @@ class GameRepositoryImpl implements GameRepository {
       throw ServerException(message: e.message);
     } on CacheException catch (e) {
       if (e.message == 'empty') {
-        return _fetchFromRemote();
+        return _fetchFromRemote(statusValue: statusValue);
       } else {
         throw e.message;
       }
@@ -46,12 +46,10 @@ class GameRepositoryImpl implements GameRepository {
 
   @override
   Future<List<Game>> filterBy(
-      {required FilterEnum filter,
-      required Status? status,
-      required bool isAscending}) async {
+      {required FilterEnum filter, required bool isAscending}) async {
     try {
       final gamesFromCache = await localDatasource.filterBy(
-          filter: filter, status: status, isAscending: isAscending);
+          filter: filter, isAscending: isAscending);
       return gamesFromCache;
     } catch (e) {
       throw e.toString();

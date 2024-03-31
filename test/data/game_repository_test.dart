@@ -47,6 +47,16 @@ void main() {
       summary: 'summary',
       totalRating: 0.0,
       status: 2);
+
+  const gameModelWithStatus = GameModel(
+      id: 1,
+      cover: GameImage(id: 1, url: 'imageCover'),
+      gameModes: [gameMode],
+      name: 'name',
+      storyline: 'storyLine',
+      summary: 'summary',
+      totalRating: 0.0,
+      status: 4);
   const screenShotModel = ScreenShotModel(
       id: 714,
       gameId: 325,
@@ -58,40 +68,64 @@ void main() {
 
   group('Fetch Games', () {
     test('Fetch games returns list of games when successful', () async {
-      when(() => mockRemoteDataSource.fetchGames())
+      when(() => mockRemoteDataSource.fetchGames(statusValue: null))
           .thenAnswer((_) async => [gameModel]);
       when(() => mockLocalDataSource.saveGames([game]))
           .thenAnswer((invocation) async => Future.value());
 
-      final result = await repository.fetchGames(isRefresh: true);
+      final result =
+          await repository.fetchGames(isRefresh: true, statusValue: null);
 
-      verify(() => mockRemoteDataSource.fetchGames()).called(1);
+      verify(() => mockRemoteDataSource.fetchGames(statusValue: null))
+          .called(1);
       verify(() => mockLocalDataSource.saveGames([game])).called(1);
       expect(result.length, 1);
       expect(result.first, game);
     });
+
+    test(
+        'Fetch games returns list of games of all same status when status is supplied',
+        () async {
+      when(() => mockRemoteDataSource.fetchGames(statusValue: 4))
+          .thenAnswer((_) async => [gameModelWithStatus]);
+      when(() =>
+              mockLocalDataSource.saveGames([gameModelWithStatus.toEntity()]))
+          .thenAnswer((invocation) async => Future.value());
+
+      final result =
+          await repository.fetchGames(isRefresh: true, statusValue: 4);
+
+      verify(() => mockRemoteDataSource.fetchGames(statusValue: 4)).called(1);
+      verify(() =>
+              mockLocalDataSource.saveGames([gameModelWithStatus.toEntity()]))
+          .called(1);
+      expect(result.length, 1);
+      expect(result.first, gameModelWithStatus.toEntity());
+    });
     test('Calls Fetch games on CacheException when games are empty', () async {
-      when(() => mockRemoteDataSource.fetchGames())
+      when(() => mockRemoteDataSource.fetchGames(statusValue: null))
           .thenAnswer((_) async => [gameModel]);
       when(() => mockLocalDataSource.fetchGames())
           .thenThrow(CacheException(message: 'empty'));
       when(() => mockLocalDataSource.saveGames([game]))
           .thenAnswer((invocation) => Future.value());
 
-      final result = await repository.fetchGames(isRefresh: false);
+      final result =
+          await repository.fetchGames(isRefresh: false, statusValue: null);
 
       verify(() => mockLocalDataSource.fetchGames()).called(1);
-      verify(() => mockRemoteDataSource.fetchGames()).called(1);
+      verify(() => mockRemoteDataSource.fetchGames(statusValue: null))
+          .called(1);
       expect(result.length, 1);
       expect(result.first, game);
     });
 
     test('Throws ServerException when remote data source fails', () async {
-      when(() => mockRemoteDataSource.fetchGames())
+      when(() => mockRemoteDataSource.fetchGames(statusValue: null))
           .thenThrow(ServerException(message: 'error'));
 
       try {
-        await repository.fetchGames(isRefresh: true);
+        await repository.fetchGames(isRefresh: true, statusValue: null);
       } catch (e) {
         expect(e, isA<ServerException>());
         expect((e as ServerException).message, 'error');

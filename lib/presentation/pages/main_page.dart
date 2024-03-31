@@ -48,7 +48,9 @@ class MainPage extends StatelessWidget {
               return Center(
                 child: TextButton(
                   onPressed: () async {
-                    await context.read<GameCubit>().fetchGames(isRefresh: true);
+                    await context
+                        .read<GameCubit>()
+                        .fetchGames(isRefresh: true, statusValue: null);
                   },
                   child: Text(
                     state.error,
@@ -70,7 +72,9 @@ class MainPage extends StatelessWidget {
   RefreshIndicator gamesFound(BuildContext context, List<Game> games) {
     return RefreshIndicator(
       onRefresh: () async {
-        await context.read<GameCubit>().fetchGames(isRefresh: true);
+        await context
+            .read<GameCubit>()
+            .fetchGames(isRefresh: true, statusValue: null);
       },
       child: ListView.builder(
         itemCount: games.length,
@@ -110,7 +114,9 @@ class MainPage extends StatelessWidget {
           const SizedBox(height: 16),
           ElevatedButton(
             onPressed: () async {
-              await context.read<GameCubit>().fetchGames(isRefresh: false);
+              await context
+                  .read<GameCubit>()
+                  .fetchGames(isRefresh: false, statusValue: null);
             },
             style: ElevatedButton.styleFrom(
               foregroundColor: Colors.blue,

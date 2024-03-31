@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
             child: const MainPage(),
-            create: (context) =>
-                dependency.sl<GameCubit>()..fetchGames(isRefresh: false)),
+            create: (context) => dependency.sl<GameCubit>()
+              ..fetchGames(isRefresh: false, statusValue: null)),
         BlocProvider(create: (context) => dependency.sl<ScreenshotCubit>())
       ],
       child: MaterialApp(
