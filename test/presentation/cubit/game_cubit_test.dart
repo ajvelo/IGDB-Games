@@ -35,12 +35,13 @@ void main() {
     blocTest('fetch games emits corrects states when succesfull',
         build: () {
           when(() => mockGameRepository.fetchGames(
+              page: 0,
               isRefresh: false,
               statusValue: null)).thenAnswer((invocation) async => [game]);
           return gameCubit;
         },
         act: (cubit) =>
-            gameCubit.fetchGames(isRefresh: false, statusValue: null),
+            gameCubit.fetchGames(isRefresh: false, statusValue: null, page: 0),
         expect: () => [
               GameLoadingState(),
               GameLoadedState(games: const [game])
@@ -49,12 +50,13 @@ void main() {
     blocTest('fetch games emits corrects states when unsuccesfull',
         build: () {
           when(() => mockGameRepository.fetchGames(
-                  isRefresh: false, statusValue: null))
-              .thenThrow(ServerException(message: 'Unknown'));
+              isRefresh: false,
+              statusValue: null,
+              page: 0)).thenThrow(ServerException(message: 'Unknown'));
           return gameCubit;
         },
         act: (cubit) =>
-            gameCubit.fetchGames(isRefresh: false, statusValue: null),
+            gameCubit.fetchGames(isRefresh: false, statusValue: null, page: 0),
         expect: () => [GameLoadingState(), GameErrorState(error: 'Unknown')]);
   });
 

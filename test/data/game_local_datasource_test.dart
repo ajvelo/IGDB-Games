@@ -50,7 +50,7 @@ void main() {
           .thenAnswer((invocation) async => Future.value([]));
 
       expect(
-          () => localDataSource.fetchGames(),
+          () => localDataSource.fetchGames(statusValue: null),
           throwsA(predicate(
               (p0) => p0 is CacheException && p0.message == 'empty')));
     });
@@ -59,7 +59,7 @@ void main() {
       when(() => gameDao.findAllGames()).thenAnswer(
           (invocation) async => Future.value([firstGame, secondGame]));
 
-      final result = await localDataSource.fetchGames();
+      final result = await localDataSource.fetchGames(statusValue: null);
 
       expect(result.length, 2);
     });
