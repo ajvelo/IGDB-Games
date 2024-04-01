@@ -31,24 +31,6 @@ class FilterOptionsDialog extends StatelessWidget {
         children: [
           _buildHeader(context),
           const SizedBox(height: 16.0),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: (Status.values)
-                  .map(
-                    (status) => Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: _buildFilterOption(context, status.displayName,
-                          Icons.change_circle_outlined, () {
-                        context.read<GameCubit>().fetchGames(
-                            isRefresh: true, statusValue: status.value);
-                        Navigator.of(context).pop();
-                      }, status),
-                    ),
-                  )
-                  .toList(),
-            ),
-          ),
           _buildFilterOption(context, 'Name (A to Z)', Icons.sort_by_alpha, () {
             context
                 .read<GameCubit>()

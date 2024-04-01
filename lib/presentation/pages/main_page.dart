@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/domain/entities/game_entity.dart';
 import 'package:igdb_games/presentation/cubit/game/game_cubit.dart';
 import 'package:igdb_games/presentation/cubit/game/game_state.dart';
@@ -7,8 +8,16 @@ import 'package:igdb_games/presentation/pages/game_detail_page.dart';
 import 'package:igdb_games/presentation/widgets/filter_dialog.dart';
 import 'package:igdb_games/presentation/widgets/game_card.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  final scrollController = ScrollController();
+  Status? status;
 
   void showFilterOptions(BuildContext context) {
     showDialog(
@@ -20,9 +29,30 @@ class MainPage extends StatelessWidget {
   }
 
   @override
+  void initState() {
+    scrollController.addListener(onScroll);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    scrollController.removeListener(onScroll);
+    super.dispose();
+  }
+
+  void onScroll() async {
+    if (scrollController.position.maxScrollExtent == scrollController.offset) {
+      await context
+          .read<GameCubit>()
+          .fetchGames(isRefresh: true, statusValue: null);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0.0,
         actions: [
           IconButton(
               onPressed: () => showFilterOptions(context),
@@ -42,15 +72,22 @@ class MainPage extends StatelessWidget {
               if (games.isEmpty) {
                 return noGamesFound(context);
               } else {
-                return gamesFound(context, games);
+                return Column(
+                  children: [
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Wrap(
+                            spacing: 8, children: _getFilterChips(context))),
+                    gamesFound(context, games)
+                  ],
+                );
               }
             } else if (state is GameErrorState) {
               return Center(
                 child: TextButton(
                   onPressed: () async {
-                    await context
-                        .read<GameCubit>()
-                        .fetchGames(isRefresh: true, statusValue: null);
+                    await context.read<GameCubit>().fetchGames(
+                        isRefresh: true, statusValue: status?.value);
                   },
                   child: Text(
                     state.error,
@@ -69,37 +106,76 @@ class MainPage extends StatelessWidget {
     );
   }
 
-  RefreshIndicator gamesFound(BuildContext context, List<Game> games) {
-    return RefreshIndicator(
-      onRefresh: () async {
-        await context
-            .read<GameCubit>()
-            .fetchGames(isRefresh: true, statusValue: null);
-      },
-      child: ListView.builder(
-        itemCount: games.length,
-        itemBuilder: (context, index) {
-          final game = games[index];
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => GameDetailPage(
-                    game: game,
-                  ),
-                ));
-              },
-              child: GameCard(
-                imageUrl: game.imageCover,
-                name: game.name,
-                summary: game.summary,
-                ranking: game.totalRating,
-                status: game.status,
-              ),
+  List<Widget> _getFilterChips(BuildContext context) {
+    return [
+          FilterChip(
+            label: Text(
+              'All',
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color: status == null ? Colors.white : Colors.black),
             ),
-          );
+            backgroundColor: status == null ? Colors.black : Colors.white,
+            onSelected: (value) async {
+              status = null;
+              await context
+                  .read<GameCubit>()
+                  .fetchGames(isRefresh: true, statusValue: status?.value);
+              setState(() {});
+            },
+          )
+        ] +
+        Status.values
+            .map((e) => FilterChip(
+                  backgroundColor: status == e ? Colors.black : Colors.white,
+                  label: Text(
+                    e.displayName,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: status == e ? Colors.white : Colors.black),
+                  ),
+                  onSelected: (value) async {
+                    status = e;
+                    await context.read<GameCubit>().fetchGames(
+                        isRefresh: true, statusValue: status?.value);
+                    setState(() {});
+                  },
+                ))
+            .toList();
+  }
+
+  Widget gamesFound(BuildContext context, List<Game> games) {
+    return Expanded(
+      child: RefreshIndicator(
+        onRefresh: () async {
+          await context
+              .read<GameCubit>()
+              .fetchGames(isRefresh: true, statusValue: status?.value);
         },
+        child: ListView.builder(
+          controller: scrollController,
+          itemCount: games.length,
+          itemBuilder: (context, index) {
+            final game = games[index];
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => GameDetailPage(
+                      game: game,
+                    ),
+                  ));
+                },
+                child: GameCard(
+                  imageUrl: game.imageCover,
+                  name: game.name,
+                  summary: game.summary,
+                  ranking: game.totalRating,
+                  status: game.status,
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

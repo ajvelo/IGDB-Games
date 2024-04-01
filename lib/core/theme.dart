@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class GlobalTheme {
   static ThemeData themeData = ThemeData(
+    useMaterial3: true,
     primaryColor: Colors.blue,
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
