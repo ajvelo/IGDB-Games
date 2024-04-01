@@ -147,21 +147,6 @@ class _$GameDao extends GameDao {
   }
 
   @override
-  Future<Game?> findGameById(int id) async {
-    return _queryAdapter.query('SELECT * FROM Game WHERE id = ?1',
-        mapper: (Map<String, Object?> row) => Game(
-            id: row['id'] as int,
-            name: row['name'] as String,
-            imageCover: row['imageCover'] as String,
-            storyLine: row['storyLine'] as String,
-            summary: row['summary'] as String,
-            totalRating: row['totalRating'] as double,
-            gameModes: _stringListConverter.decode(row['gameModes'] as String),
-            status: _statusIntConverter.decode(row['status'] as String)),
-        arguments: [id]);
-  }
-
-  @override
   Future<void> insertGames(List<Game> games) async {
     await _gameInsertionAdapter.insertList(games, OnConflictStrategy.replace);
   }

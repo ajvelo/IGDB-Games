@@ -18,6 +18,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final scrollController = ScrollController();
   Status? status;
+  int page = 0;
 
   void showFilterOptions(BuildContext context) {
     showDialog(
@@ -42,9 +43,11 @@ class _MainPageState extends State<MainPage> {
 
   void onScroll() async {
     if (scrollController.position.maxScrollExtent == scrollController.offset) {
+      page++;
       await context
           .read<GameCubit>()
-          .fetchGames(isRefresh: true, statusValue: null);
+          .fetchGames(isRefresh: true, statusValue: status?.value, page: page);
+      setState(() {});
     }
   }
 
@@ -87,7 +90,9 @@ class _MainPageState extends State<MainPage> {
                 child: TextButton(
                   onPressed: () async {
                     await context.read<GameCubit>().fetchGames(
-                        isRefresh: true, statusValue: status?.value);
+                        isRefresh: true,
+                        statusValue: status?.value,
+                        page: page);
                   },
                   child: Text(
                     state.error,
@@ -117,9 +122,8 @@ class _MainPageState extends State<MainPage> {
             backgroundColor: status == null ? Colors.black : Colors.white,
             onSelected: (value) async {
               status = null;
-              await context
-                  .read<GameCubit>()
-                  .fetchGames(isRefresh: true, statusValue: status?.value);
+              await context.read<GameCubit>().fetchGames(
+                  isRefresh: true, statusValue: status?.value, page: 0);
               setState(() {});
             },
           )
@@ -135,7 +139,7 @@ class _MainPageState extends State<MainPage> {
                   onSelected: (value) async {
                     status = e;
                     await context.read<GameCubit>().fetchGames(
-                        isRefresh: true, statusValue: status?.value);
+                        isRefresh: true, statusValue: status?.value, page: 0);
                     setState(() {});
                   },
                 ))
@@ -146,9 +150,8 @@ class _MainPageState extends State<MainPage> {
     return Expanded(
       child: RefreshIndicator(
         onRefresh: () async {
-          await context
-              .read<GameCubit>()
-              .fetchGames(isRefresh: true, statusValue: status?.value);
+          await context.read<GameCubit>().fetchGames(
+              isRefresh: true, statusValue: status?.value, page: page);
         },
         child: ListView.builder(
           controller: scrollController,
@@ -190,9 +193,11 @@ class _MainPageState extends State<MainPage> {
           const SizedBox(height: 16),
           ElevatedButton(
             onPressed: () async {
+              status = null;
               await context
                   .read<GameCubit>()
-                  .fetchGames(isRefresh: false, statusValue: null);
+                  .fetchGames(isRefresh: false, statusValue: null, page: 0);
+              setState(() {});
             },
             style: ElevatedButton.styleFrom(
               foregroundColor: Colors.blue,

@@ -1,10 +1,11 @@
 import 'package:igdb_games/core/filter.dart';
 import 'package:igdb_games/core/server_exception.dart';
+import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/data/local_datasource/game_dao.dart';
 import 'package:igdb_games/domain/entities/game_entity.dart';
 
 abstract class GameLocalDatasource {
-  Future<List<Game>> fetchGames();
+  Future<List<Game>> fetchGames({required int? statusValue});
   Future<List<Game>> filterBy(
       {required FilterEnum filter, required bool isAscending});
   Future<void> saveGames(List<Game> games);
@@ -15,14 +16,21 @@ class GameLocalDatasourceImpl implements GameLocalDatasource {
 
   GameLocalDatasourceImpl({required this.dao});
   @override
-  Future<List<Game>> fetchGames() async {
+  Future<List<Game>> fetchGames({required int? statusValue}) async {
+    List<Game> games = await dao.findAllGames();
     try {
-      final games = await dao.findAllGames();
       if (games.isEmpty) {
         throw CacheException(message: 'empty');
       }
-      games
-          .sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+      games.sort(
+        (a, b) => a.id.compareTo(b.id),
+      );
+
+      if (statusValue != null) {
+        games = games
+            .where((element) => element.status.value == statusValue)
+            .toList();
+      }
       return games;
     } catch (e) {
       if (e is CacheException) rethrow;
@@ -38,7 +46,7 @@ class GameLocalDatasourceImpl implements GameLocalDatasource {
   @override
   Future<List<Game>> filterBy(
       {required FilterEnum filter, required bool isAscending}) async {
-    final games = await fetchGames();
+    final games = await fetchGames(statusValue: null);
     switch (filter) {
       case FilterEnum.name:
         isAscending

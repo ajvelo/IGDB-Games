@@ -53,14 +53,14 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                 },
                 child: CachedNetworkImage(
                   imageUrl: "https:${widget.imageUrls[index]}",
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.cover,
                   placeholder: (context, url) => const SizedBox.shrink(),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ));
           },
         ),
         Positioned(
-          bottom: 16,
+          bottom: 32,
           left: 0,
           right: 0,
           child: Row(

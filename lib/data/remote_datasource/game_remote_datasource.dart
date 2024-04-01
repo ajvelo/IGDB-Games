@@ -5,7 +5,8 @@ import 'package:igdb_games/data/models/game_model.dart';
 import 'package:igdb_games/data/models/screenshot_model.dart';
 
 abstract class GameRemoteDatasource {
-  Future<List<GameModel>> fetchGames({required int? statusValue});
+  Future<List<GameModel>> fetchGames(
+      {required int? statusValue, required int page});
   Future<List<ScreenShotModel>> fetchScreenShots({required int gameId});
 }
 
@@ -14,11 +15,12 @@ class GameRemoteDataSourceImpl implements GameRemoteDatasource {
 
   GameRemoteDataSourceImpl({required this.dio});
   @override
-  Future<List<GameModel>> fetchGames({required int? statusValue}) async {
+  Future<List<GameModel>> fetchGames(
+      {required int? statusValue, required int page}) async {
     try {
       final response = await dio.post('https://api.igdb.com/v4/games',
           data:
-              "fields cover.url,game_modes.name,status,name,screenshots,storyline,summary,total_rating,url; where cover.url!=null & storyline!=null & total_rating!=null & screenshots!=null & summary!=null & name!= null & ${statusValue != null ? 'status=$statusValue' : 'status!=null'} & game_modes.name !=null;",
+              "fields cover.url,game_modes.name,status,name,screenshots,storyline,summary,total_rating,url; where cover.url!=null & storyline!=null & total_rating!=null & screenshots!=null & summary!=null & name!= null & ${statusValue != null ? 'status=$statusValue' : 'status!=null'} & game_modes.name !=null; limit 5; offset ${page * 5};",
           options: Options(headers: {
             'Client-ID': Constants.clientId,
             'Authorization': 'Bearer ${Constants.token}'

@@ -19,11 +19,16 @@ class GameCubit extends Cubit<GameState> {
     }
   }
 
-  fetchGames({required bool isRefresh, required int? statusValue}) async {
-    emit(GameLoadingState());
+  fetchGames(
+      {required bool isRefresh,
+      required int? statusValue,
+      required int page}) async {
+    if (page == 0) {
+      emit(GameLoadingState());
+    }
     try {
       final result = await gameRepository.fetchGames(
-          isRefresh: isRefresh, statusValue: statusValue);
+          isRefresh: isRefresh, statusValue: statusValue, page: page);
       emit(GameLoadedState(games: result));
     } catch (e) {
       emit(GameErrorState(error: _handleErrors(error: e)));

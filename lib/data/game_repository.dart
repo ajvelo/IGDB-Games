@@ -13,28 +13,33 @@ class GameRepositoryImpl implements GameRepository {
   GameRepositoryImpl(
       {required this.localDatasource, required this.remoteDatasource});
 
-  Future<List<Game>> _fetchFromRemote({required int? statusValue}) async {
-    final results = await remoteDatasource.fetchGames(statusValue: statusValue);
+  Future<List<Game>> _fetchFromRemote(
+      {required int? statusValue, required int page}) async {
+    final results =
+        await remoteDatasource.fetchGames(statusValue: statusValue, page: page);
     final games = results.map((gameModels) => gameModels.toEntity()).toList();
     await localDatasource.saveGames(games);
-    return games;
+    return localDatasource.fetchGames(statusValue: statusValue);
   }
 
   @override
   Future<List<Game>> fetchGames(
-      {required bool isRefresh, required int? statusValue}) async {
+      {required bool isRefresh,
+      required int? statusValue,
+      required int page}) async {
     try {
       if (isRefresh) {
-        return _fetchFromRemote(statusValue: statusValue);
+        return _fetchFromRemote(statusValue: statusValue, page: page);
       } else {
-        final gamesFromCache = await localDatasource.fetchGames();
+        final gamesFromCache =
+            await localDatasource.fetchGames(statusValue: statusValue);
         return gamesFromCache;
       }
     } on ServerException catch (e) {
       throw ServerException(message: e.message);
     } on CacheException catch (e) {
       if (e.message == 'empty') {
-        return _fetchFromRemote(statusValue: statusValue);
+        return _fetchFromRemote(statusValue: statusValue, page: page);
       } else {
         throw e.message;
       }

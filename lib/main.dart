@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             child: const MainPage(),
             create: (context) => dependency.sl<GameCubit>()
-              ..fetchGames(isRefresh: false, statusValue: null)),
+              ..fetchGames(isRefresh: false, statusValue: null, page: 0)),
         BlocProvider(create: (context) => dependency.sl<ScreenshotCubit>())
       ],
       child: MaterialApp(

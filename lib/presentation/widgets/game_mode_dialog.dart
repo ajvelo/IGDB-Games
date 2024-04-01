@@ -6,23 +6,18 @@ class GameModeDialog extends StatelessWidget {
   const GameModeDialog({super.key, required this.gameModes});
 
   Widget _buildGameModeButton(BuildContext context, String mode) {
-    return InkWell(
-      onTap: () {
-        Navigator.pop(context, mode);
-      },
-      child: Container(
-        padding: const EdgeInsets.only(top: 8, bottom: 8),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          color: Colors.grey[200],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(mode, style: Theme.of(context).textTheme.bodyLarge),
-          ],
-        ),
+    return Container(
+      padding: const EdgeInsets.only(top: 8, bottom: 8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: Colors.grey[200],
+      ),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(mode,
+            maxLines: 2,
+            textAlign: TextAlign.start,
+            style: Theme.of(context).textTheme.bodyLarge),
       ),
     );
   }
@@ -32,11 +27,12 @@ class GameModeDialog extends StatelessWidget {
     return AlertDialog(
       title: Row(
         children: [
-          Text('Modes:', style: Theme.of(context).textTheme.bodyLarge),
+          Text('Game Modes:',
+              style: Theme.of(context).textTheme.headlineMedium),
           const Spacer(),
           const Icon(
             Icons.gamepad,
-            color: Colors.blue,
+            color: Colors.black,
             size: 30.0,
           ),
         ],

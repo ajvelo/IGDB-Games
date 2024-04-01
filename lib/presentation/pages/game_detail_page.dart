@@ -36,6 +36,7 @@ class _GameDetailPageState extends State<GameDetailPage> {
           color: Colors.black,
           child: Text(
             widget.game.name,
+            maxLines: 2,
             style: textTheme.headlineLarge!.copyWith(color: Colors.white),
           ),
         ),
@@ -91,7 +92,8 @@ class _GameDetailPageState extends State<GameDetailPage> {
   Widget _buildContent(BuildContext context, TextTheme textTheme) {
     return Padding(
       padding: EdgeInsets.only(
-          bottom: 64, top: MediaQuery.of(context).size.height * 0.4),
+          bottom: MediaQuery.of(context).size.height * 0.1,
+          top: MediaQuery.of(context).size.height * 0.4),
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
@@ -124,14 +126,13 @@ class _GameDetailPageState extends State<GameDetailPage> {
                   'Screenshots:',
                   style: textTheme.headlineMedium,
                 ),
-                const SizedBox(height: 8),
                 BlocBuilder<ScreenshotCubit, ScreenShotState>(
                   builder: (context, state) {
                     if (state is ScreenShotLoadingState) {
                       return const CircularProgressIndicator();
                     } else if (state is ScreenShotLoadedState) {
                       return SizedBox(
-                          height: 200,
+                          height: MediaQuery.of(context).size.height * 0.3,
                           child: CustomCarouselSlider(imageUrls: state.urls));
                     } else {
                       return const SizedBox.shrink();
@@ -146,18 +147,21 @@ class _GameDetailPageState extends State<GameDetailPage> {
     );
   }
 
-  Row _buildBottomRow(TextTheme textTheme) {
-    return Row(
-      children: [
-        const Icon(Icons.star, color: Colors.amber),
-        const SizedBox(width: 4.0),
-        Text(
-          widget.game.totalRating.toStringAsFixed(1),
-          style: textTheme.headlineMedium,
-        ),
-        const Spacer(),
-        StatusBadge(status: widget.game.status)
-      ],
+  Widget _buildBottomRow(TextTheme textTheme) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          const Icon(Icons.star, color: Colors.amber),
+          const SizedBox(width: 4.0),
+          Text(
+            widget.game.totalRating.toStringAsFixed(1),
+            style: textTheme.headlineMedium,
+          ),
+          const Spacer(),
+          StatusBadge(status: widget.game.status)
+        ],
+      ),
     );
   }
 }

@@ -9,9 +9,6 @@ abstract class GameDao {
   @Query('SELECT name FROM Game')
   Future<List<String>> findAllGamesByName();
 
-  @Query('SELECT * FROM Game WHERE id = :id')
-  Future<Game?> findGameById(int id);
-
   @Insert(onConflict: OnConflictStrategy.replace)
   Future<void> insertGames(List<Game> games);
 }
