@@ -51,10 +51,12 @@ class GameRepositoryImpl implements GameRepository {
 
   @override
   Future<List<Game>> filterBy(
-      {required FilterEnum filter, required bool isAscending}) async {
+      {required FilterEnum filter,
+      required bool isAscending,
+      required int? statusValue}) async {
     try {
       final gamesFromCache = await localDatasource.filterBy(
-          filter: filter, isAscending: isAscending);
+          filter: filter, isAscending: isAscending, statusValue: statusValue);
       return gamesFromCache;
     } catch (e) {
       throw e.toString();
@@ -71,6 +73,18 @@ class GameRepositoryImpl implements GameRepository {
       throw ServerException(message: e.message);
     } catch (e) {
       if (e is ServerException) rethrow;
+      throw e.toString();
+    }
+  }
+
+  @override
+  Future<List<Game>> searchForGames(
+      {required String text, required int? statusValue}) async {
+    try {
+      final games = await localDatasource.searchForGames(
+          text: text, statusValue: statusValue);
+      return games;
+    } catch (e) {
       throw e.toString();
     }
   }

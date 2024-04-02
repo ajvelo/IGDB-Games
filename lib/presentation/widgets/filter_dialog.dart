@@ -5,7 +5,8 @@ import 'package:igdb_games/core/status_enum.dart';
 import 'package:igdb_games/presentation/cubit/game/game_cubit.dart';
 
 class FilterOptionsDialog extends StatelessWidget {
-  const FilterOptionsDialog({super.key});
+  final int? statusValue;
+  const FilterOptionsDialog({super.key, required this.statusValue});
 
   @override
   Widget build(BuildContext context) {
@@ -32,28 +33,32 @@ class FilterOptionsDialog extends StatelessWidget {
           _buildHeader(context),
           const SizedBox(height: 16.0),
           _buildFilterOption(context, 'Name (A to Z)', Icons.sort_by_alpha, () {
-            context
-                .read<GameCubit>()
-                .filterBy(filter: FilterEnum.name, isAscending: true);
+            context.read<GameCubit>().filterBy(
+                filter: FilterEnum.name,
+                isAscending: true,
+                statusValue: statusValue);
             Navigator.of(context).pop();
           }, null),
           _buildFilterOption(context, 'Name (Z to A)', Icons.star, () {
-            context
-                .read<GameCubit>()
-                .filterBy(filter: FilterEnum.ranking, isAscending: false);
+            context.read<GameCubit>().filterBy(
+                filter: FilterEnum.ranking,
+                isAscending: false,
+                statusValue: statusValue);
             Navigator.of(context).pop();
           }, null),
           _buildFilterOption(context, 'Rank (High to Low)', Icons.sort_by_alpha,
               () {
-            context
-                .read<GameCubit>()
-                .filterBy(filter: FilterEnum.ranking, isAscending: true);
+            context.read<GameCubit>().filterBy(
+                filter: FilterEnum.ranking,
+                isAscending: true,
+                statusValue: statusValue);
             Navigator.of(context).pop();
           }, null),
           _buildFilterOption(context, 'Rank (Low to High)', Icons.star, () {
-            context
-                .read<GameCubit>()
-                .filterBy(filter: FilterEnum.ranking, isAscending: false);
+            context.read<GameCubit>().filterBy(
+                filter: FilterEnum.ranking,
+                isAscending: false,
+                statusValue: statusValue);
             Navigator.of(context).pop();
           }, null),
         ],

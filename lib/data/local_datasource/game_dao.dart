@@ -11,4 +11,7 @@ abstract class GameDao {
 
   @Insert(onConflict: OnConflictStrategy.replace)
   Future<void> insertGames(List<Game> games);
+
+  @Query('SELECT * FROM Game WHERE name LIKE :text')
+  Future<List<Game>> searchForGames(String text);
 }

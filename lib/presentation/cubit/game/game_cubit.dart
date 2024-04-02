@@ -19,6 +19,16 @@ class GameCubit extends Cubit<GameState> {
     }
   }
 
+  searchForGames({required String text, required int? statusValue}) async {
+    try {
+      final result = await gameRepository.searchForGames(
+          text: text, statusValue: statusValue);
+      emit(GameLoadedState(games: result, inSearch: true));
+    } catch (e) {
+      emit(GameErrorState(error: _handleErrors(error: e)));
+    }
+  }
+
   fetchGames(
       {required bool isRefresh,
       required int? statusValue,
@@ -29,18 +39,21 @@ class GameCubit extends Cubit<GameState> {
     try {
       final result = await gameRepository.fetchGames(
           isRefresh: isRefresh, statusValue: statusValue, page: page);
-      emit(GameLoadedState(games: result));
+      emit(GameLoadedState(games: result, inSearch: false));
     } catch (e) {
       emit(GameErrorState(error: _handleErrors(error: e)));
     }
   }
 
-  filterBy({required FilterEnum filter, required bool isAscending}) async {
+  filterBy(
+      {required FilterEnum filter,
+      required bool isAscending,
+      required int? statusValue}) async {
     emit(GameLoadingState());
     try {
       final result = await gameRepository.filterBy(
-          filter: filter, isAscending: isAscending);
-      emit(GameLoadedState(games: result));
+          filter: filter, isAscending: isAscending, statusValue: statusValue);
+      emit(GameLoadedState(games: result, inSearch: false));
     } catch (e) {
       emit(GameErrorState(error: _handleErrors(error: e)));
     }

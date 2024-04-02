@@ -7,8 +7,12 @@ import 'package:igdb_games/domain/entities/game_entity.dart';
 abstract class GameLocalDatasource {
   Future<List<Game>> fetchGames({required int? statusValue});
   Future<List<Game>> filterBy(
-      {required FilterEnum filter, required bool isAscending});
+      {required FilterEnum filter,
+      required bool isAscending,
+      required int? statusValue});
   Future<void> saveGames(List<Game> games);
+  Future<List<Game>> searchForGames(
+      {required String text, required int? statusValue});
 }
 
 class GameLocalDatasourceImpl implements GameLocalDatasource {
@@ -26,15 +30,22 @@ class GameLocalDatasourceImpl implements GameLocalDatasource {
         (a, b) => a.id.compareTo(b.id),
       );
 
-      if (statusValue != null) {
-        games = games
-            .where((element) => element.status.value == statusValue)
-            .toList();
-      }
+      games = _filterByStatus(statusValue: statusValue, games: games);
       return games;
     } catch (e) {
       if (e is CacheException) rethrow;
       throw e.toString();
+    }
+  }
+
+  List<Game> _filterByStatus(
+      {required int? statusValue, required List<Game> games}) {
+    if (statusValue != null) {
+      return games
+          .where((element) => element.status.value == statusValue)
+          .toList();
+    } else {
+      return games;
     }
   }
 
@@ -45,7 +56,9 @@ class GameLocalDatasourceImpl implements GameLocalDatasource {
 
   @override
   Future<List<Game>> filterBy(
-      {required FilterEnum filter, required bool isAscending}) async {
+      {required FilterEnum filter,
+      required bool isAscending,
+      required int? statusValue}) async {
     final games = await fetchGames(statusValue: null);
     switch (filter) {
       case FilterEnum.name:
@@ -54,14 +67,22 @@ class GameLocalDatasourceImpl implements GameLocalDatasource {
                 (a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()))
             : games.sort(
                 (a, b) => b.name.toLowerCase().compareTo(a.name.toLowerCase()));
-        return games;
+
       case FilterEnum.ranking:
         isAscending
             ? games.sort((a, b) => b.totalRating.compareTo(a.totalRating))
             : games.sort((a, b) => a.totalRating.compareTo(b.totalRating));
-        return games;
+
       default:
-        return games;
+        return _filterByStatus(statusValue: statusValue, games: games);
     }
+    return _filterByStatus(statusValue: statusValue, games: games);
+  }
+
+  @override
+  Future<List<Game>> searchForGames(
+      {required String text, required int? statusValue}) async {
+    List<Game> games = await dao.searchForGames('%$text%');
+    return _filterByStatus(statusValue: statusValue, games: games);
   }
 }

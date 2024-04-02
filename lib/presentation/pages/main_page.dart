@@ -19,12 +19,13 @@ class _MainPageState extends State<MainPage> {
   final scrollController = ScrollController();
   Status? status;
   int page = 0;
+  TextEditingController searchController = TextEditingController();
 
   void showFilterOptions(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return const FilterOptionsDialog();
+        return FilterOptionsDialog(statusValue: status?.value);
       },
     );
   }
@@ -58,7 +59,11 @@ class _MainPageState extends State<MainPage> {
         scrolledUnderElevation: 0.0,
         actions: [
           IconButton(
-              onPressed: () => showFilterOptions(context),
+              onPressed: () {
+                searchController.clear();
+                setState(() {});
+                showFilterOptions(context);
+              },
               icon: const Icon(Icons.filter_alt))
         ],
       ),
@@ -72,11 +77,33 @@ class _MainPageState extends State<MainPage> {
               );
             } else if (state is GameLoadedState) {
               final games = state.games;
-              if (games.isEmpty) {
+              if (games.isEmpty && !state.inSearch) {
                 return noGamesFound(context);
               } else {
                 return Column(
                   children: [
+                    TextField(
+                      controller: searchController,
+                      onChanged: (value) async {
+                        await context.read<GameCubit>().searchForGames(
+                            text: value, statusValue: status?.value);
+                      },
+                      decoration: InputDecoration(
+                        hintText: 'Search for games...',
+                        prefixIcon: const Icon(Icons.search),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: const BorderSide(color: Colors.grey),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: const BorderSide(color: Colors.blue),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 16.0, vertical: 14.0),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
                     SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Wrap(
@@ -121,6 +148,7 @@ class _MainPageState extends State<MainPage> {
             ),
             backgroundColor: status == null ? Colors.black : Colors.white,
             onSelected: (value) async {
+              searchController.clear();
               status = null;
               await context.read<GameCubit>().fetchGames(
                   isRefresh: true, statusValue: status?.value, page: 0);
@@ -137,6 +165,7 @@ class _MainPageState extends State<MainPage> {
                         color: status == e ? Colors.white : Colors.black),
                   ),
                   onSelected: (value) async {
+                    searchController.clear();
                     status = e;
                     await context.read<GameCubit>().fetchGames(
                         isRefresh: true, statusValue: status?.value, page: 0);

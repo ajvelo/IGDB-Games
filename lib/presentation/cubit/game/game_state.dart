@@ -15,9 +15,10 @@ class GameLoadingState extends GameState {
 
 class GameLoadedState extends GameState {
   final List<Game> games;
-  GameLoadedState({required this.games});
+  final bool inSearch;
+  GameLoadedState({required this.games, required this.inSearch});
   @override
-  List<Object?> get props => [games];
+  List<Object?> get props => [games, inSearch];
 }
 
 class GameErrorState extends GameState {
