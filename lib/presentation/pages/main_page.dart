@@ -83,6 +83,8 @@ class _MainPageState extends State<MainPage> {
                 return Column(
                   children: [
                     TextField(
+                      onTapOutside: (event) =>
+                          FocusManager.instance.primaryFocus?.unfocus(),
                       controller: searchController,
                       onChanged: (value) async {
                         await context.read<GameCubit>().searchForGames(
@@ -139,7 +141,27 @@ class _MainPageState extends State<MainPage> {
   }
 
   List<Widget> _getFilterChips(BuildContext context) {
-    return [
+    return Status.values
+        .map((e) => FilterChip(
+              backgroundColor: status == e ? Colors.black : Colors.white,
+              label: Text(
+                e.displayName,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(color: status == e ? Colors.white : Colors.black),
+              ),
+              onSelected: (value) async {
+                searchController.clear();
+                status = e;
+                await context.read<GameCubit>().fetchGames(
+                    isRefresh: true, statusValue: status?.value, page: 0);
+                setState(() {});
+              },
+            ))
+        .toList()
+      ..insert(
+          0,
           FilterChip(
             label: Text(
               'All',
@@ -154,25 +176,7 @@ class _MainPageState extends State<MainPage> {
                   isRefresh: true, statusValue: status?.value, page: 0);
               setState(() {});
             },
-          )
-        ] +
-        Status.values
-            .map((e) => FilterChip(
-                  backgroundColor: status == e ? Colors.black : Colors.white,
-                  label: Text(
-                    e.displayName,
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: status == e ? Colors.white : Colors.black),
-                  ),
-                  onSelected: (value) async {
-                    searchController.clear();
-                    status = e;
-                    await context.read<GameCubit>().fetchGames(
-                        isRefresh: true, statusValue: status?.value, page: 0);
-                    setState(() {});
-                  },
-                ))
-            .toList();
+          ));
   }
 
   Widget gamesFound(BuildContext context, List<Game> games) {

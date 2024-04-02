@@ -14,6 +14,7 @@ void main() {
   late GameLocalDatasourceImpl localDataSource;
 
   const firstGame = Game(
+    key: 1,
     gameModes: ['url'],
     status: Status.alpha,
     storyLine: "",
@@ -24,6 +25,7 @@ void main() {
     totalRating: 50.0,
   );
   const secondGame = Game(
+    key: 2,
     gameModes: ['url'],
     status: Status.alpha,
     storyLine: "",
@@ -34,6 +36,7 @@ void main() {
     totalRating: 20.0,
   );
   const thirdGame = Game(
+    key: 3,
     gameModes: ['url'],
     status: Status.alpha,
     storyLine: "",

@@ -26,12 +26,11 @@ class GameLocalDatasourceImpl implements GameLocalDatasource {
       if (games.isEmpty) {
         throw CacheException(message: 'empty');
       }
-      games.sort(
-        (a, b) => a.id.compareTo(b.id),
-      );
-
       games = _filterByStatus(statusValue: statusValue, games: games);
-      return games;
+      return games
+        ..sort(
+          (a, b) => a.key.compareTo(b.key),
+        );
     } catch (e) {
       if (e is CacheException) rethrow;
       throw e.toString();

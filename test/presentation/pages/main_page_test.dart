@@ -25,6 +25,7 @@ void main() {
   });
 
   const game = Game(
+    key: 1,
     storyLine: 'storyLine',
     gameModes: ['url'],
     id: 1,

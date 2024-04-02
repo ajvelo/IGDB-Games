@@ -13,6 +13,7 @@ class Game extends Equatable {
   final double totalRating;
   final List<String> gameModes;
   final Status status;
+  final int key;
 
   const Game(
       {required this.id,
@@ -22,7 +23,8 @@ class Game extends Equatable {
       required this.summary,
       required this.totalRating,
       required this.gameModes,
-      required this.status});
+      required this.status,
+      required this.key});
 
   @override
   List<Object?> get props => [
@@ -33,6 +35,7 @@ class Game extends Equatable {
         imageCover,
         storyLine,
         status,
-        gameModes
+        gameModes,
+        key
       ];
 }

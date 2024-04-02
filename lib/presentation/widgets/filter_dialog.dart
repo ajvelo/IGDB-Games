@@ -92,8 +92,7 @@ class FilterOptionsDialog extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 8.0),
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
-          color:
-              status != null ? status.badgeColor : Colors.blue.withOpacity(0.8),
+          color: status != null ? status.badgeColor : Colors.black87,
           borderRadius: BorderRadius.circular(15.0),
         ),
         child: Row(

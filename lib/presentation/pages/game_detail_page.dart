@@ -36,10 +36,13 @@ class _GameDetailPageState extends State<GameDetailPage> {
           color: Colors.black,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(
-              widget.game.name,
-              maxLines: 2,
-              style: textTheme.headlineLarge!.copyWith(color: Colors.white),
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                widget.game.name,
+                maxLines: 2,
+                style: textTheme.headlineLarge!.copyWith(color: Colors.white),
+              ),
             ),
           ),
         ),

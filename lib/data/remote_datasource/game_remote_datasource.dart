@@ -20,7 +20,7 @@ class GameRemoteDataSourceImpl implements GameRemoteDatasource {
     try {
       final response = await dio.post('https://api.igdb.com/v4/games',
           data:
-              "fields cover.url,game_modes.name,status,name,screenshots,storyline,summary,total_rating,url; where cover.url!=null & storyline!=null & total_rating!=null & screenshots!=null & summary!=null & name!= null & ${statusValue != null ? 'status=$statusValue' : 'status!=null'} & game_modes.name !=null; limit 5; offset ${page * 5};",
+              "fields cover.url,game_modes.name,status,name,screenshots,storyline,summary,total_rating,url; where cover.url!=null & storyline!=null & total_rating!=null & screenshots!=null & summary!=null & name!= null & ${statusValue != null ? 'status=$statusValue' : 'status!=null'} & game_modes.name !=null; limit 2; offset ${page * 2};",
           options: Options(headers: {
             'Client-ID': Constants.clientId,
             'Authorization': 'Bearer ${Constants.token}'

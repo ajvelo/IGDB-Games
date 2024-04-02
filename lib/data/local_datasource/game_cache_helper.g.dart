@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Game` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `summary` TEXT NOT NULL, `imageCover` TEXT NOT NULL, `storyLine` TEXT NOT NULL, `totalRating` REAL NOT NULL, `gameModes` TEXT NOT NULL, `status` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Game` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `summary` TEXT NOT NULL, `imageCover` TEXT NOT NULL, `storyLine` TEXT NOT NULL, `totalRating` REAL NOT NULL, `gameModes` TEXT NOT NULL, `status` TEXT NOT NULL, `key` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -115,7 +115,8 @@ class _$GameDao extends GameDao {
                   'storyLine': item.storyLine,
                   'totalRating': item.totalRating,
                   'gameModes': _stringListConverter.encode(item.gameModes),
-                  'status': _statusIntConverter.encode(item.status)
+                  'status': _statusIntConverter.encode(item.status),
+                  'key': item.key
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -137,7 +138,8 @@ class _$GameDao extends GameDao {
             summary: row['summary'] as String,
             totalRating: row['totalRating'] as double,
             gameModes: _stringListConverter.decode(row['gameModes'] as String),
-            status: _statusIntConverter.decode(row['status'] as String)));
+            status: _statusIntConverter.decode(row['status'] as String),
+            key: row['key'] as int));
   }
 
   @override
@@ -151,13 +153,14 @@ class _$GameDao extends GameDao {
             summary: row['summary'] as String,
             totalRating: row['totalRating'] as double,
             gameModes: _stringListConverter.decode(row['gameModes'] as String),
-            status: _statusIntConverter.decode(row['status'] as String)),
+            status: _statusIntConverter.decode(row['status'] as String),
+            key: row['key'] as int),
         arguments: [text]);
   }
 
   @override
   Future<void> insertGames(List<Game> games) async {
-    await _gameInsertionAdapter.insertList(games, OnConflictStrategy.replace);
+    await _gameInsertionAdapter.insertList(games, OnConflictStrategy.ignore);
   }
 }
 
