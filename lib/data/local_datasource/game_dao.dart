@@ -6,12 +6,9 @@ abstract class GameDao {
   @Query('SELECT * FROM Game')
   Future<List<Game>> findAllGames();
 
-  @Query('SELECT name FROM Game')
-  Future<List<String>> findAllGamesByName();
+  @Query('SELECT * FROM Game WHERE name LIKE :text')
+  Future<List<Game>> searchForGames(String text);
 
   @Insert(onConflict: OnConflictStrategy.replace)
   Future<void> insertGames(List<Game> games);
-
-  @Query('SELECT * FROM Game WHERE name LIKE :text')
-  Future<List<Game>> searchForGames(String text);
 }

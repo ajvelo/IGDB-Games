@@ -154,20 +154,24 @@ void main() {
     test('Should call local data source to filter games', () async {
       when(() => mockLocalDataSource.filterBy(
           filter: FilterEnum.name,
-          isAscending: true)).thenAnswer((invocation) async => [game]);
+          isAscending: true,
+          statusValue: null)).thenAnswer((invocation) async => [game]);
 
-      await repository.filterBy(filter: FilterEnum.name, isAscending: true);
+      await repository.filterBy(
+          filter: FilterEnum.name, isAscending: true, statusValue: null);
 
       verify(() => mockLocalDataSource.filterBy(
-          filter: FilterEnum.name, isAscending: true)).called(1);
+          filter: FilterEnum.name,
+          isAscending: true,
+          statusValue: null)).called(1);
     });
     test('Should successfully return ordered games by name', () async {
       when(() => mockLocalDataSource.filterBy(
-              filter: FilterEnum.name, isAscending: true))
+              filter: FilterEnum.name, isAscending: true, statusValue: null))
           .thenAnswer((invocation) async => [game, secondGame]);
 
-      final result =
-          await repository.filterBy(filter: FilterEnum.name, isAscending: true);
+      final result = await repository.filterBy(
+          filter: FilterEnum.name, isAscending: true, statusValue: null);
 
       expect(result, [game, secondGame]);
     });
@@ -195,6 +199,27 @@ void main() {
         expect(e, isA<ServerException>());
         expect((e as ServerException).message, 'error');
       }
+    });
+  });
+
+  group('Search By Name', () {
+    test('Search by name returns list of games when successful', () async {
+      when(() => mockLocalDataSource.searchForGames(
+          text: 'text',
+          statusValue: null)).thenAnswer((invocation) async => [game]);
+
+      final result =
+          await repository.searchForGames(text: 'text', statusValue: null);
+      expect(result, [game]);
+    });
+    test('Returns empty list when none are found', () async {
+      when(() => mockLocalDataSource.searchForGames(
+          text: 'text',
+          statusValue: null)).thenAnswer((invocation) async => []);
+
+      final result =
+          await repository.searchForGames(text: 'text', statusValue: null);
+      expect(result, isEmpty);
     });
   });
 }

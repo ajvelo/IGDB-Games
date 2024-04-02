@@ -76,7 +76,7 @@ void main() {
 
   testWidgets('Loaded state with games', (WidgetTester tester) async {
     when(() => gameCubit.state)
-        .thenReturn(GameLoadedState(games: const [game]));
+        .thenReturn(GameLoadedState(games: const [game], inSearch: false));
 
     await tester.pumpWidget(BlocProvider<GameCubit>(
       create: (context) =>
@@ -91,8 +91,10 @@ void main() {
     expect(find.byType(GameCard), findsOneWidget);
   });
 
-  testWidgets('Loaded state with no games', (WidgetTester tester) async {
-    when(() => gameCubit.state).thenReturn(GameLoadedState(games: const []));
+  testWidgets('Loaded state with no games and no search',
+      (WidgetTester tester) async {
+    when(() => gameCubit.state)
+        .thenReturn(GameLoadedState(games: const [], inSearch: false));
 
     await tester.pumpWidget(BlocProvider<GameCubit>(
       create: (context) =>
@@ -106,6 +108,24 @@ void main() {
 
     expect(find.text('No filters match your results.'), findsOneWidget);
     expect(find.text('Clear filters'), findsOneWidget);
+  });
+
+  testWidgets('Loaded state with no games and with search',
+      (WidgetTester tester) async {
+    when(() => gameCubit.state)
+        .thenReturn(GameLoadedState(games: const [], inSearch: true));
+
+    await tester.pumpWidget(BlocProvider<GameCubit>(
+      create: (context) =>
+          gameCubit..fetchGames(isRefresh: true, statusValue: null, page: 0),
+      child: const MaterialApp(
+        home: MainPage(),
+      ),
+    ));
+
+    await tester.pumpAndSettle();
+
+    expect(find.byType(TextField), findsOneWidget);
   });
 
   testWidgets('Error state', (WidgetTester tester) async {

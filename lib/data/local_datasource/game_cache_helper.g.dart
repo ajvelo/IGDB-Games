@@ -141,12 +141,6 @@ class _$GameDao extends GameDao {
   }
 
   @override
-  Future<List<String>> findAllGamesByName() async {
-    return _queryAdapter.queryList('SELECT name FROM Game',
-        mapper: (Map<String, Object?> row) => row.values.first as String);
-  }
-
-  @override
   Future<List<Game>> searchForGames(String text) async {
     return _queryAdapter.queryList('SELECT * FROM Game WHERE name LIKE ?1',
         mapper: (Map<String, Object?> row) => Game(

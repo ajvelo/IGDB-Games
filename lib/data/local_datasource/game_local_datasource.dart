@@ -59,7 +59,7 @@ class GameLocalDatasourceImpl implements GameLocalDatasource {
       {required FilterEnum filter,
       required bool isAscending,
       required int? statusValue}) async {
-    final games = await fetchGames(statusValue: null);
+    final games = await fetchGames(statusValue: statusValue);
     switch (filter) {
       case FilterEnum.name:
         isAscending
@@ -74,15 +74,15 @@ class GameLocalDatasourceImpl implements GameLocalDatasource {
             : games.sort((a, b) => a.totalRating.compareTo(b.totalRating));
 
       default:
-        return _filterByStatus(statusValue: statusValue, games: games);
+        return games;
     }
-    return _filterByStatus(statusValue: statusValue, games: games);
+    return games;
   }
 
   @override
   Future<List<Game>> searchForGames(
       {required String text, required int? statusValue}) async {
-    List<Game> games = await dao.searchForGames('%$text%');
+    final games = await dao.searchForGames('%$text%');
     return _filterByStatus(statusValue: statusValue, games: games);
   }
 }

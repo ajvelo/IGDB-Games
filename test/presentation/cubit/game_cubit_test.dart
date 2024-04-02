@@ -44,7 +44,7 @@ void main() {
             gameCubit.fetchGames(isRefresh: false, statusValue: null, page: 0),
         expect: () => [
               GameLoadingState(),
-              GameLoadedState(games: const [game])
+              GameLoadedState(games: const [game], inSearch: false)
             ]);
 
     blocTest('fetch games emits corrects states when unsuccesfull',
@@ -64,29 +64,59 @@ void main() {
     test('Initial state should be GameStateInitial', () {
       expect(gameCubit.state, GameInitialState());
     });
-    blocTest('filter by  emits corrects states when succesfull',
+    blocTest('filter by emits corrects states when succesfull',
         build: () {
           when(() => mockGameRepository.filterBy(
               filter: FilterEnum.name,
+              statusValue: null,
               isAscending: true)).thenAnswer((invocation) async => [game]);
           return gameCubit;
         },
-        act: (cubit) =>
-            gameCubit.filterBy(filter: FilterEnum.name, isAscending: true),
+        act: (cubit) => gameCubit.filterBy(
+            filter: FilterEnum.name, isAscending: true, statusValue: null),
         expect: () => [
               GameLoadingState(),
-              GameLoadedState(games: const [game])
+              GameLoadedState(games: const [game], inSearch: false)
             ]);
 
     blocTest('filter by emits corrects states when unsuccesfull',
         build: () {
           when(() => mockGameRepository.filterBy(
               filter: FilterEnum.name,
+              statusValue: null,
               isAscending: true)).thenThrow(CacheException(message: 'Unknown'));
           return gameCubit;
         },
-        act: (cubit) =>
-            gameCubit.filterBy(filter: FilterEnum.name, isAscending: true),
+        act: (cubit) => gameCubit.filterBy(
+            filter: FilterEnum.name, isAscending: true, statusValue: null),
         expect: () => [GameLoadingState(), GameErrorState(error: 'Unknown')]);
+  });
+
+  group('Search By Name', () {
+    blocTest('search by name emits corrects states when succesfull',
+        build: () {
+          when(() => mockGameRepository.searchForGames(
+                text: 'text',
+                statusValue: null,
+              )).thenAnswer((invocation) async => [game]);
+          return gameCubit;
+        },
+        act: (cubit) =>
+            gameCubit.searchForGames(text: 'text', statusValue: null),
+        expect: () => [
+              GameLoadedState(games: const [game], inSearch: true)
+            ]);
+
+    blocTest('seacrch by name emits corrects states when succesfull',
+        build: () {
+          when(() => mockGameRepository.searchForGames(
+                text: 'text',
+                statusValue: null,
+              )).thenAnswer((invocation) async => []);
+          return gameCubit;
+        },
+        act: (cubit) =>
+            gameCubit.searchForGames(text: 'text', statusValue: null),
+        expect: () => [GameLoadedState(games: const [], inSearch: true)]);
   });
 }

@@ -10,8 +10,8 @@ import 'package:mocktail/mocktail.dart';
 class MockGameDao extends Mock implements GameDao {}
 
 void main() {
-  final gameDao = MockGameDao();
-  final localDataSource = GameLocalDatasourceImpl(dao: gameDao);
+  late MockGameDao gameDao;
+  late GameLocalDatasourceImpl localDataSource;
 
   const firstGame = Game(
     gameModes: ['url'],
@@ -44,6 +44,11 @@ void main() {
     totalRating: 10.0,
   );
 
+  setUpAll(() {
+    gameDao = MockGameDao();
+    localDataSource = GameLocalDatasourceImpl(dao: gameDao);
+  });
+
   group('Fetch games', () {
     test('Should throw a Cache Exception when a no games are found', () async {
       when(() => gameDao.findAllGames())
@@ -71,7 +76,7 @@ void main() {
           Future.value([secondGame, thirdGame, firstGame]));
 
       final result = await localDataSource.filterBy(
-          filter: FilterEnum.name, isAscending: true);
+          filter: FilterEnum.name, isAscending: true, statusValue: null);
 
       expect(result.length, 3);
       expect(result, [firstGame, secondGame, thirdGame]);
@@ -82,7 +87,21 @@ void main() {
           Future.value([thirdGame, firstGame, secondGame]));
 
       final result = await localDataSource.filterBy(
-          filter: FilterEnum.ranking, isAscending: true);
+          filter: FilterEnum.ranking, isAscending: true, statusValue: null);
+
+      expect(result.length, 3);
+      expect(result, [firstGame, secondGame, thirdGame]);
+    });
+  });
+
+  group('Search By Name', () {
+    test('Should succesfully search for games by name', () async {
+      when(() => gameDao.searchForGames('%text%')).thenAnswer(
+          (invocation) async =>
+              Future.value([firstGame, secondGame, thirdGame]));
+
+      final result =
+          await localDataSource.searchForGames(text: 'text', statusValue: null);
 
       expect(result.length, 3);
       expect(result, [firstGame, secondGame, thirdGame]);
