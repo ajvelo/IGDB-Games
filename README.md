@@ -20,18 +20,13 @@
  <table>
   <tr>
      <td><h3>Filter games<h3></td>
-     <td><h3>Search for your favorite games<h3></td>
-     <td><h3>View screenshots of your favorite games<h3></td>
-      
+     <td><h3>Search for your favorite games<h3></td> 
   </tr>
   <tr>
     <td><img src="./screenshots/main-page2-ios.png" width=295 height=639></td>
     <td><img src="./screenshots/searching.gif" width=295 height=639></td>
-    <td><img src="./screenshots/detail-page2-ios.png" width=295 height=639></td>
-    
   </tr>
  </table>
-
   <table>
   <tr>
      <td><h3>Read the summary and storyline<h3></td>
@@ -40,6 +35,15 @@
   <tr>
     <td><img src="./screenshots/detail-page-ios.png" width=295 height=639></td>
     <td><img src="./screenshots/main-page-ios.png" width=295 height=639></td>
+  </tr>
+ </table>
+
+   <table>
+  <tr>
+     <td><h3>View screenshots of your favorite games<h3></td>
+  </tr>
+  <tr>
+     <td><img src="./screenshots/detail-page2-ios.png" width=295 height=639></td>
   </tr>
  </table>
 
@@ -100,12 +104,10 @@ flutter test
 <table>
   <tr>
     <td><h3>Searching<h3></td>
-     <td><h3>Game Status<h3></td>
      <td><h3>Detail Page<h3></td>
   </tr>
   <tr>
     <td><img src="./screenshots/android/search.png" width=295 height=639></td>
-    <td><img src="./screenshots/android/status.png" width=295 height=639></td>
     <td><img src="./screenshots/android/detail.png" width=295 height=639></td>
   </tr>
  </table>
@@ -114,11 +116,20 @@ flutter test
   <tr>
     <td><h3>Filter<h3></td>
      <td><h3>Game Modes<h3></td>
-     <td><h3>Game Screenshots<h3></td>
   </tr>
   <tr>
     <td><img src="./screenshots/android/filter.png" width=295 height=639></td>
     <td><img src="./screenshots/android/game-mode.png" width=295 height=639></td>
+  </tr>
+ </table>
+
+  <table>
+  <tr>
+    <td><h3>Game Status<h3></td>
+    <td><h3>Game Screenshots<h3></td>
+  </tr>
+  <tr>
+    <td><img src="./screenshots/android/status.png" width=295 height=639></td>
     <td><img src="./screenshots/android/screenshots.png" width=295 height=639></td>
   </tr>
  </table>
