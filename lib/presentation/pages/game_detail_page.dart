@@ -34,10 +34,13 @@ class _GameDetailPageState extends State<GameDetailPage> {
         foregroundColor: Colors.black,
         title: Container(
           color: Colors.black,
-          child: Text(
-            widget.game.name,
-            maxLines: 2,
-            style: textTheme.headlineLarge!.copyWith(color: Colors.white),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              widget.game.name,
+              maxLines: 2,
+              style: textTheme.headlineLarge!.copyWith(color: Colors.white),
+            ),
           ),
         ),
         actions: [
