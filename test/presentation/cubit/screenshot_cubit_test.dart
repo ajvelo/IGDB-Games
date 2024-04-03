@@ -5,7 +5,7 @@ import 'package:igdb_games/presentation/cubit/screenshot/screenshot_cubit.dart';
 import 'package:igdb_games/presentation/cubit/screenshot/screenshot_state.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'cubit/game_cubit_test.dart';
+import 'game_cubit_test.dart';
 
 void main() {
   final mockGameRepository = MockGameRepository();
